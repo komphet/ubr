@@ -21,7 +21,9 @@ class SetupCategory extends Migration
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
-
+        DB::table('setup_category')->insert([
+            ['id' => '1','list' => '0','title' => 'ทั่วไป','detail' => '','slug' => '','active' => '1','created_at' => '2016-02-07 18:56:23','updated_at' => '2016-02-07 18:56:23'],
+        ]);
     }
 
     /**

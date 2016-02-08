@@ -35,6 +35,9 @@ class Member extends Migration
             $table->boolean('admin')->default(false);
             $table->timestamps();
         });
+        DB::table('member')->insert([
+            ['id' => '','username' => '','password' => '','email' => '','studenNo' => '13361','idCardNo' => '1400800090491','titleName' => 'นาย','name' => 'คมเพชร','lastname' => 'มีทรัพย์','CRNo' => '14','room' => '1','class' => '6','address' => '42 ม.11 ต.บ้านดง อ.อุบลรัตน์ จ.ขอนแก่น 40250','tel' => '66805356935','contact' => '','gradYear' => '2558','remember_token' => '','active' => '1','admin' => '1','created_at' => '','updated_at' =>''],
+        ]);
     }
 
     /**

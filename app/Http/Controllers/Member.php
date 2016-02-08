@@ -141,7 +141,12 @@ class Member extends Controller
     }
 
     public function insertStuden(){
-        return view('admin.insertstuden');
+        $classTeacher = SetupValue::where('slug','like','CLASS-TEACHER-%')->orderby('list')->get();
+        $titleName = SetupValue::where('slug','like','TITLE-NAME-%')->orderby('list')->get();
+        return view('admin.insertstuden')
+                    ->with('classTeachers',$classTeacher)
+                    ->with('titleNames',$titleName)
+        ;
     }
 
 }
