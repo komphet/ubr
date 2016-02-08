@@ -140,4 +140,8 @@ class Member extends Controller
         }
     }
 
+    public function insertStuden(){
+        return view('admin.insertstuden');
+    }
+
 }

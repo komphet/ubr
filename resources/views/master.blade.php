@@ -83,8 +83,10 @@
 			           </a>
 			          <ul class="dropdown-menu">
 			          	<li><a href="">ข้อมูลสมาชิก</a></li>
+			          	<li role="separator" class="divider"></li>
 			          	@if(Auth::user()->admin)
-			          	<li><a href="{{ route('admin') }}">Admin</a></li>
+			          	<li><a href="{{ route('insertStuden') }}">เพิ่มรายชื่อนักเรียน</a></li>
+			          	<li><a href="{{ route('admin') }}">ตั้งค่าระบบ</a></li>
 			          	@endif
 			            <li role="separator" class="divider"></li>
 			            <li><a href="//{{$_SERVER['SERVER_NAME']}}/logout">ลงชื่อออก</a></li>
