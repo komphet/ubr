@@ -32,7 +32,7 @@ Route::post('admin/setup/update',['middleware'=>'admin','as' => 'adminSetupUpdat
 Route::post('admin/setup/insert',['middleware'=>'admin','as' => 'adminSetupInsert','uses'=>'admin@setupInsert']);
 Route::post('admin/setup/del/',['middleware'=>'admin','as' => 'adminSetupDel','uses'=>'admin@setupdel']);
 Route::get('admin/insertstuden',function(){
-	return 'dkfjgshldkjh';
+	return 'return5555';
 });
 
 
