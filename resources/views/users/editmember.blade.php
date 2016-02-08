@@ -1,9 +1,10 @@
 @extends('master')
 
 @section('title')
-	เพิ่มข้อมูลนักเรียน
+	ข้อความ
 @endsection
 
 @section('content')
-	Fuck you!!
+sdfasdfdfasd
+
 @endsection
