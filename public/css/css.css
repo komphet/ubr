@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: tahoma, arial, sans-serif, 宋体, 'Hiragino Sans GB','microsoft yahei';
+}
+.margin-top{
+	margin-top: 0.2em;
+}
+
+.padding{
+	padding: 0.5em;
+}
+
+.error{
+	color: red;
+}
+
+.text{
+	font-size: 0.9em;
+}
+
+.margin{
+	margin:5px;
+}
+
+hr.style-four {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+hr.style-two {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.pointer{
+	cursor: pointer;
+}
+
+.navbar{
+	box-shadow: 0 0 10px;
+}
+
+.panel-body{
+	/*background-color: #F9F9F9;*/
+}
+.none{
+	display: none;
+}
