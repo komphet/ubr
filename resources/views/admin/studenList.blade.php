@@ -26,22 +26,24 @@
 
 </style>
 
-{!! Form::text('id','') !!}
 <div class="row">
-	<div class="col-sm-4">
+	<div class="col-md-4">
+	{!! Form::open() !!}
+	{!! Form::hidden('id','') !!}
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		  	<div class="row">
-		  		<div class="col-sm-8">
+		  		<div class="col-md-8">
 		  			เพิ่ม/แก้ไขข้อมูลนักเรียน
 		  		</div>
-		  		<div class="col-sm-4">
+		  		<div class="col-md-4">
 		  			{!! Form::checkbox("admin","") !!} ผู้ดูแลระบบ
 		  		</div>
 		  	</div>
 		  	
 		  </div>
 		  <div class="panel-body">
+		  	
 		  		<div class="input-group">
 				  <span class="input-group-addon" id="basic-addon1"><div class="input-title">ปีจบการศึกษา</div></span>
 				  <input value="{{ date('Y')+542 }}" type="text" class="form-control" name="gradYear" aria-describedby="basic-addon1">
@@ -82,18 +84,27 @@
 				  <span class="input-group-addon" id="basic-addon1"><div class="input-title">นามสกุล</div></span>
 				  <input type="text" class="form-control" name="lastname" aria-describedby="basic-addon1">
 				</div>
-				<button style="width:100%" class="btn btn-success">บันทึกข้อมูล</button>
+				<div class="row" align="center">
+					 <div class="col-md-6">
+						<button type="reset" style="width:100%" class="btn btn-warning">Reset</button>
+					 </div>
+					 <div class="col-md-6">
+						<button type="submit" style="width:100%" class="btn btn-success">บันทึกข้อมูล</button> 	
+					 </div>
+				</div>
+
 		  </div>
 		</div>
+	{!! Form::close(); !!}
 	</div>
-	<div class="col-sm-8">
+	<div class="col-md-8">
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="row">
-					<div class="col-sm-1">
+					<div class="col-md-1">
 						ค้นหา
 					</div>
-					<div class="col-sm-3">
+					<div class="col-md-3">
 						<select class="form-control" name="seachType">
 							<option value="studenNo">รหัสนักเรียน</option>
 							<option value="idCardNo">รหัสประชาชน</option>
@@ -110,10 +121,10 @@
 							<option value="email">email</option>
 						</select>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-md-6">
 						{!! Form::text('seachText','',array('class'=>'form-control','placeholder'=>'คำค้นหา')) !!}
 					</div>
-					<div class="col-sm-2" align="right">
+					<div class="col-md-2" align="right">
 						<button class="btn btn-success" style="width:100%;">
 							ค้นหา
 						</button>
