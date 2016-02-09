@@ -15,6 +15,7 @@ class BookyearDetail extends Migration
         Schema::create("bookyear_detail",function(Blueprint $table){
             $table->increments("id");
             $table->integer("memberId");
+            $table->string("nickname");
             $table->string("aboutMe");
             $table->string("define");
             $table->string("likeSubject");

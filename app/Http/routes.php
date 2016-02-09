@@ -26,7 +26,6 @@ Route::get('logout',function(){
 	return Redirect::to('/');
 });
 
-Route::get('member',['middleware'=>'auth','as' => 'member','uses'=>'Home@index']);
 
 //Admin
 
@@ -45,6 +44,7 @@ Route::post('admin/insertstuden',['middleware'=>'admin','as'=>'insertStuden','us
 Route::get('member/edit',function(){
 	return view('users.editmember');
 });
+Route::get('member',['middleware'=>'auth','as' => 'member','uses'=>'Home@index']);
 
-
+Route::get('member/yearbook',['middleware'=>'auth','as'=>'yearbook','uses'=>'Member@yearbook']);
 

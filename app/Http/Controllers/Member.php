@@ -151,4 +151,8 @@ class Member extends Controller
         ;
     }
 
+    public function yearbook(){
+        return view('users.yearbook');
+    }
+
 }
