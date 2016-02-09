@@ -15,6 +15,9 @@ Route::get('/home','Home@index');
 
 
 Route::get('register',['middleware'=>'guest','as' => 'register','uses'=>'Member@register']);
+
+
+
 Route::post('register',['middleware'=>'guest','as' => 'register','uses'=>'Member@register']);
 Route::get('login',['middleware'=>'guest','as'=>'login','uses'=>'Member@loginForm']);
 Route::post('login','Member@login');
@@ -31,8 +34,10 @@ Route::get('admin',['middleware'=>'admin','as' => 'admin','uses'=>'admin@index']
 Route::post('admin/setup/update',['middleware'=>'admin','as' => 'adminSetupUpdate','uses'=>'admin@setupUpdate']);
 Route::post('admin/setup/insert',['middleware'=>'admin','as' => 'adminSetupInsert','uses'=>'admin@setupInsert']);
 Route::post('admin/setup/del/',['middleware'=>'admin','as' => 'adminSetupDel','uses'=>'admin@setupdel']);
-Route::get('admin/insertstuden',['middleware'=>'admin','as'=>'insertStuden','uses'=>'Member@insertStuden']);
 
+
+Route::get('admin/insertstuden',['middleware'=>'admin','as'=>'insertStuden','uses'=>'Member@insertStuden']);
+Route::post('admin/insertstuden',['middleware'=>'admin','as'=>'insertStuden','uses'=>'Member@insertStuden']);
 
 
 

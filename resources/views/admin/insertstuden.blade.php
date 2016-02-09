@@ -10,6 +10,7 @@
 @endsection 
 
 @section('content')
+
 <style type="text/css">
 	.input-group{
 		margin-bottom:5px; 
@@ -21,6 +22,13 @@
 
 
 </style>
+<?php
+	if(isset($_POST['gradeYear'])){
+		echo $_POST['gradeYear'];
+	}
+?>
+<form action="http://ubr.local/admin/insertstuden" method="post">
+<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
 		<div class="panel panel-primary">
@@ -71,6 +79,7 @@
 		</div>
 	</div>
 </div>
+</form>
 
 
 
