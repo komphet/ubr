@@ -125,10 +125,10 @@
 				<table class="table table-hover" style="width:100%;">
 					<tr>
 						<th>รหัสนักเรียน</th>
-						<th>ชื่อ-สกุล</th>
+						<th>รหัสประชาชน</th>
+						<th>ชื่อ-นามสกุล</th>
 						<th>ชั้น</th>
 						<th>เลขที่</th>
-						<th>รหัสประชาชน</th>
 					</tr>
 					
 						@foreach($studenLists as $studenList)
@@ -146,10 +146,18 @@
 							onclick="updateStuden('{{ $studenList->id }}');"
 							>
 							<td>{{ $studenList->studenNo }}</td>
-							<td>{{ $studenList->titleName }} {{ $studenList->name }} {{ $studenList->lastname }}</td>
+							<td>{{ $studenList->idCardNo }}</td>
+							<td>
+								<table width="100%">
+									<tr>										
+										<td width="20%">{{ $studenList->titleName }}</td>
+										<td width="40%">{{ $studenList->name }}</td>
+										<td width="40%">{{ $studenList->lastname }}</td>
+									</tr>
+								</table>
+							</td>
 							<td>{{ $studenList->class }}/{{ $studenList->room }}</td>
 							<td>{{ $studenList->CRNo }}</td>
-							<td>{{ $studenList->idCardNo }}</td>
 						</tr>
 						@endforeach
 						
