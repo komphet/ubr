@@ -151,10 +151,11 @@ class Member extends Controller
         ;
     }
 
-<<<<<<< HEAD
+
     public function yearbook(){
         return view('users.yearbook');
-=======
+    }
+
     public function studenUpdate(Request $request){
         
         $validator = Validator::make($request->all(),[
@@ -173,7 +174,7 @@ class Member extends Controller
 
         return 'true';
         
->>>>>>> 9683c952d0de0231dfdef1f8ad159a08bc871dd4
-    }
 
+    
+    }
 }
