@@ -55,6 +55,7 @@
 	<script src="//{{ $_SERVER['SERVER_NAME'] }}/js/jquery-2.1.4.min.js"></script>
 	<script src="//{{ $_SERVER['SERVER_NAME'] }}/bootstrap/js/bootstrap.min.js"></script>
 	<script src="//{{ $_SERVER['SERVER_NAME'] }}/datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="//{{ $_SERVER['SERVER_NAME'] }}/js/jquery.form.js"></script>
 	<script src="//{{ $_SERVER['SERVER_NAME'] }}/js/script.js"></script>
 </head>
 <body>
@@ -84,8 +85,8 @@
 			          <ul class="dropdown-menu">
 			          	<li><a href="{{ route('member') }}">ข้อมูลสมาชิก</a></li>
 			          	<li><a href="{{ route('yearbook') }}">หนังสือรุ่น</a></li>
-			          	<li role="separator" class="divider"></li>
 			          	@if(Auth::user()->admin)
+			          		<li role="separator" class="divider"></li>
 			          		<li><a href="{{ route('insertStuden') }}">เพิ่มข้อมูลนักเรียน</a></li>
 			          		<li><a href="{{ route('admin') }}">ตั้งค่าระบบ</a></li>
 			          	@endif

@@ -17,7 +17,6 @@ class BookyearDetail extends Migration
             $table->integer("memberId");
             $table->string("nickname");
             $table->string("aboutMe");
-            $table->string("define");
             $table->string("likeSubject");
             $table->string("likeColor");
             $table->string("myFriend");

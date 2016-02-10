@@ -28,7 +28,7 @@
 
 <div class="row">
 	<div class="col-md-4">
-	{!! Form::open() !!}
+	{!! Form::open(array('class'=>'updateForm')) !!}
 	{!! Form::hidden('id','') !!}
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
@@ -37,7 +37,7 @@
 		  			เพิ่ม/แก้ไขข้อมูลนักเรียน
 		  		</div>
 		  		<div class="col-md-4">
-		  			{!! Form::checkbox("admin","") !!} ผู้ดูแลระบบ
+		  			{!! Form::checkbox("admin","true") !!} ผู้ดูแลระบบ
 		  		</div>
 		  	</div>
 		  	
@@ -89,7 +89,7 @@
 						<button type="reset" style="width:100%" class="btn btn-warning">Reset</button>
 					 </div>
 					 <div class="col-md-6">
-						<button type="submit" style="width:100%" class="btn btn-success">บันทึกข้อมูล</button> 	
+						<button id="updateSaveBtn" type="submit" onclick="$(this).addClass('dissabled').text('Loading....');" style="width:100%" class="btn btn-success">บันทึกข้อมูล</button> 	
 					 </div>
 				</div>
 
@@ -143,7 +143,7 @@
 					</tr>
 					
 						@foreach($studenLists as $studenList)
-						<tr id="list-{{ $studenList->id }}" class="studenList" 
+						<tr id="list-{{ $studenList->id }}" 
 							data-gradYear="{{ $studenList->gradYear }}"
 							data-class="{{ $studenList->class }}"
 							data-room="{{ $studenList->room }}"
@@ -155,6 +155,11 @@
 							data-lastname="{{ $studenList->lastname }}"
 							data-admin="{{ $studenList->admin }}"
 							onclick="updateStuden('{{ $studenList->id }}');"
+							class="studenList 
+								@if($studenList->admin)
+									info
+								@endif
+							"
 							>
 							<td>{{ $studenList->studenNo }}</td>
 							<td>{{ $studenList->idCardNo }}</td>
@@ -225,10 +230,24 @@
 			$('input[name=admin]').prop( "checked", false );
 		}
 
-		
 
 
 	}
+
+$(document).ready(function(){
+	$('.updateForm').each(function(){
+		$(this).ajaxForm(function(data){
+			if(data == 'false'){
+				alert('ข้อมูลไม่ตรงตามเงื่อนไข กรุณาตรวจสอบข้อมูล!');
+			}else{
+				$('.updateForm').trigger('reset');
+				$('#updateSaveBtn').removeClass('dissabled').test();
+			}
+		}).fail(function(){
+			alert('Error! กรุณาตรวจสอบการเชื่อต่อ!');
+		});
+	});
+});
 </script>
 
 
