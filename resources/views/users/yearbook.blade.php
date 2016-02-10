@@ -14,8 +14,12 @@
 		margin-bottom:5px; 
 	}
 	.input-title{
-		width:80px;
-		text-align: left;;
+		width:70px;
+		text-align: left;
+	}
+	.input-title2{
+		width:110px;
+		text-align: left;
 	}
 	.studenList{
 		cursor: pointer;
@@ -39,39 +43,39 @@
 				 	<input type="text" class="form-control" name="nickname" placeholder="เช่น อิชิตัน,โออิชิ" aria-describedby="basic-addon1">
 				</div>
 				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon2">แนะนำตัว</span>
+					<span class="input-group-addon" id="basic-addon2"><div class="input-title">แนะนำตัว</div></span>
 					<input type="text" class="form-control" name="aboutMe" placeholder="เช่น สวัสดีฉันชื่ออิชิตัน" aria-describedby="basic-addon2">					
 				</div>
 				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon3">คติประจำใจ</span>
+					<span class="input-group-addon" id="basic-addon3"><div class="input-title">คติประจำใจ</div></span>
 					<input type="text" class="form-control" name="motto" placeholder="เช่น จงทำวันนี้ให้ดีที่สุด" aria-describedby="basic-addon3">					
 				</div>
 				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon5">วิชาที่ชอบ</span>
+					<span class="input-group-addon" id="basic-addon5"><div class="input-title">วิชาที่ชอบ</div></span>
 				 	<input type="text" class="form-control" name="likeSubject" placeholder="เช่น คณิต,วิทย์,อังกฤษ,สังคม" aria-describedby="basic-addon5">
 				</div>
 				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon6">สีที่ชอบ</span>
+					<span class="input-group-addon" id="basic-addon6"><div class="input-title">สีที่ชอบ</div></span>
 				 	<input type="text" class="form-control" name="likeColor" placeholder="เช่น ขาด,ดำ" aria-describedby="basic-addon6">
 				</div>
 				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon7">เพื่อสนิท</span>
+					<span class="input-group-addon" id="basic-addon7"><div class="input-title">เพื่อสนิท</div></span>
 				 	<input type="text" class="form-control" name="myfriend" placeholder="เช่น อิชิตัน,โออิชิ" aria-describedby="basic-addon7">
 				</div>
 		 		<div class="input-group">
-					<span class="input-group-addon" id="basic-addon8">อาจารย์ที่ชื่นชอบ</span>
+					<span class="input-group-addon" id="basic-addon8"><div class="input-title2">อาจารย์ที่ชื่นชอบ</div></span>
 				 	<input type="text" class="form-control" name="myTeacher" placeholder="เช่น อ.อิชิตัน,อ.โออิชิ" aria-describedby="basic-addon8">
 		 		</div>
 		 		<div class="input-group">
-					<span class="input-group-addon" id="basic-addon9">อยากบอกเพื่อนว่า</span>
+					<span class="input-group-addon" id="basic-addon9"><div class="input-title2">อยากบอกเพื่อนว่า</div></span>
 				 	<input type="text" class="form-control" name="myFriend" placeholder="เช่น ลาก่อนอิชิตัน,ลาก่อนโออิชิ" aria-describedby="basic-addon9">
 		 		</div>
 		 		<div class="input-group">
-					<span class="input-group-addon" id="basic-addon10">อยากบอกอาจารย์ว่า</span>
+					<span class="input-group-addon" id="basic-addon10"><div class="input-title2">อยากบอกอาจารย์ว่า</div></span>
 				 	<input type="text" class="form-control" name="tellTeacher" placeholder="เช่น ลาก่อนครับ,ลาก่อนค่ะ" aria-describedby="basic-addon10">
 		 		</div>
 		 		<div class="input-group">
-					<span class="input-group-addon" id="basic-addon11">อยากบอกโรงเรียนว่า</span>
+					<span class="input-group-addon" id="basic-addon11"><div class="input-title2">อยากบอกโรงเรียนว่า</div></span>
 				 	<input type="text" class="form-control" name="tellSchool" placeholder="เช่น เรียนดีจุงเบย" aria-describedby="basic-addon11">
 		 		</div>
 		 	</div>	 			
