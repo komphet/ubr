@@ -30,6 +30,10 @@
 	 				หนังสือรุ่น
 	 		</div>
 	 		<div class="panel-body">
+	 			<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">ภาพ</span>
+					<input type="file" name="55" class="form-control">
+				</div>
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">ชื่อเล่น</span>
 				 	<input type="text" class="form-control" name="nickname" placeholder="เช่น อิชิตัน,โออิชิ" aria-describedby="basic-addon1">
@@ -41,12 +45,6 @@
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon3">คติประจำใจ</span>
 					<input type="text" class="form-control" name="motto" placeholder="เช่น จงทำวันนี้ให้ดีที่สุด" aria-describedby="basic-addon3">					
-				</div>	
-				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon4">สามคำที่เป็นตัวเอง</span>
-					<input type="text" class="form-control" name="define" placeholder="หล่อ,สวย" aria-describedby="basic-addon4">	
-					<input type="text" class="form-control" name="define" placeholder="ขาว,ดำ" aria-describedby="basic-addon4">	
-					<input type="text" class="form-control" name="define" placeholder="ตี๋,หมวย" aria-describedby="basic-addon4">						
 				</div>
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5">วิชาที่ชอบ</span>
