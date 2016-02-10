@@ -140,19 +140,40 @@ class Member extends Controller
         }
     }
 
-    public function insertStuden(){
+    public function studenList(){
         $classTeacher = SetupValue::where('slug','like','CLASS-TEACHER-%')->orderby('list')->get();
         $titleName = SetupValue::where('slug','like','TITLE-NAME-%')->orderby('list')->get();
-        $studenList = User::get();
-        return view('admin.insertstuden')
+        $studenList = User::orderby('class')->orderby('room')->orderby('CRNo')->get();
+        return view('admin.studenList')
                     ->with('classTeachers',$classTeacher)
                     ->with('titleNames',$titleName)
                     ->with('studenLists',$studenList)
         ;
     }
 
+<<<<<<< HEAD
     public function yearbook(){
         return view('users.yearbook');
+=======
+    public function studenUpdate(Request $request){
+        
+        $validator = Validator::make($request->all(),[
+            'classRoom'     => 'required',
+            'CRNo'          => 'required',
+            'studenNo'      => 'required',
+            'idCardNo'      => 'required|min:13|max:13',
+            'titleName'     => 'required',
+            'name'          => 'required',
+            'lastname'      => 'required',
+        ]);
+
+        if($validator->fails()){
+            return 'false';
+        }
+
+        return 'true';
+        
+>>>>>>> 9683c952d0de0231dfdef1f8ad159a08bc871dd4
     }
 
 }
