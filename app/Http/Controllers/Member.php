@@ -172,9 +172,39 @@ class Member extends Controller
             return 'false';
         }
 
-        return 'true';
-        
 
-    
+        if($request->get('id') != ''){
+            $updateMember = User::find($request->get('id'));
+        }else{
+            $updateMember = new User;
+        }
+
+        if($request->get('admin')){
+            $admin = 1;
+        }else{
+            $admin = 0;
+        }
+
+        $classRoom = explode(',', $request->get('classRoom'));
+        $updateMember->class = trim($classRoom[0]);
+        $updateMember->room = trim($classRoom[1]);
+        $updateMember->CRNo = trim($request->get('CRNo'));
+        $updateMember->gradYear = trim($request->get('gradYear'));
+        $updateMember->studenNo = trim($request->get('studenNo'));
+        $updateMember->idCardNo = trim($request->get('idCardNo'));
+        $updateMember->titleName = trim($request->get('titleName'));
+        $updateMember->name = trim($request->get('name'));
+        $updateMember->lastname = trim($request->get('lastname'));
+        $updateMember->admin = trim($admin);
+        $updateMember->save();
+
+        if($updateMember != ''){
+            return 'true';
+        }else{
+            return 'true';
+        }
+        
     }
+
+
 }
