@@ -82,7 +82,7 @@
 			           <span class="caret"></span>
 			           </a>
 			          <ul class="dropdown-menu">
-			          	<li><a href="">ข้อมูลสมาชิก</a></li>
+			          	<li><a href="{{ route('member') }}">ข้อมูลสมาชิก</a></li>
 			          	<li><a href="{{ route('yearbook') }}">หนังสือรุ่น</a></li>
 			          	<li role="separator" class="divider"></li>
 			          	@if(Auth::user()->admin)

@@ -20,10 +20,14 @@ use App\SetupValue;
 class Member extends Controller
 {
     protected $agreement = null;
+    protected $classTeacher = null;
+    protected $titleName = null;
 
     public function __construct(){
         //$agreement = SetupValue::where('slug','AGREEMENT')->first()->value;
         //$this->agreement = $agreement;
+        $this->classTeacher = SetupValue::where('slug','like','CLASS-TEACHER-%')->orderby('list')->get();
+        $this->titleName = SetupValue::where('slug','like','TITLE-NAME-%')->orderby('list')->get();
     }
 
 
@@ -140,13 +144,14 @@ class Member extends Controller
         }
     }
 
+
+
     public function studenList(){
-        $classTeacher = SetupValue::where('slug','like','CLASS-TEACHER-%')->orderby('list')->get();
-        $titleName = SetupValue::where('slug','like','TITLE-NAME-%')->orderby('list')->get();
+       
         $studenList = User::orderby('class')->orderby('room')->orderby('CRNo')->get();
         return view('admin.studenList')
-                    ->with('classTeachers',$classTeacher)
-                    ->with('titleNames',$titleName)
+                    ->with('classTeachers',$this->classTeacher)
+                    ->with('titleNames',$this->titleName)
                     ->with('studenLists',$studenList)
         ;
     }
@@ -176,5 +181,12 @@ class Member extends Controller
         
 
     
+    }
+
+    public function index(){
+        return view('users.index')
+                ->with('classTeachers',$this->classTeacher)
+                ->with('titleNames',$this->titleName)
+                ;
     }
 }

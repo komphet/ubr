@@ -1,4 +1,4 @@
-@extends('master')pri
+@extends('master')
 
 @section('title')
 	หนังสือรุ่น
@@ -32,7 +32,7 @@
 	 		<div class="panel-body">
 	 			<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">ภาพ</span>
-					<input type="file" name="55" class="form-control">
+					<input type="file" name="photo" class="form-control">
 				</div>
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">ชื่อเล่น</span>
