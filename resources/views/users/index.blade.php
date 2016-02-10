@@ -69,7 +69,7 @@
 							  <span class="input-group-addon"><div class="input-title">สายชั้น</div></span>
 							  <select class="form-control" id="sel1" name="classRoom">
 							  	@foreach($classTeachers as $classTeacher)
-							    	<option class="classRoomOption" value="{{$classTeacher->title}},{{$classTeacher->value}}">{{$classTeacher->title}}/{{$classTeacher->value}} {{$classTeacher->detail}}</option>
+							    	<option class="classRoomOption" <?php if(Auth::user()->class == $classTeacher->title && Auth::user()->room == $classTeacher->value){ echo 'selected';}; ?> value="{{$classTeacher->title}},{{$classTeacher->value}}">{{$classTeacher->title}}/{{$classTeacher->value}} {{$classTeacher->detail}}</option>
 							    @endforeach
 							  </select>
 							</div>
@@ -89,7 +89,7 @@
 							  <span class="input-group-addon"><div class="input-title">คำนำหน้าชื่อ</div></span>
 							  <select class="form-control" name="titleName" id="sel2">
 							  	@foreach($titleNames as $titleName)
-							    	<option class="titleNameOption" value="{{$titleName->title}}">{{$titleName->title}}</option>
+							    	<option <?php if(Auth::user()->titleName == $titleName->title){ echo 'selected';}; ?> class="titleNameOption" value="{{$titleName->title}}">{{$titleName->title}}</option>
 							    @endforeach
 							  </select>
 							</div>

@@ -89,7 +89,7 @@
 						<button type="reset" style="width:100%" class="btn btn-warning">Reset</button>
 					 </div>
 					 <div class="col-md-6">
-						<button id="updateSaveBtn" type="submit" onclick="$(this).addClass('dissabled').text('Loading....');" style="width:100%" class="btn btn-success">บันทึกข้อมูล</button> 	
+						<button id="updateSaveBtn" type="submit" onclick="$(this).addClass('disabled').text('Loading....');" style="width:100%" class="btn btn-success">บันทึกข้อมูล</button> 	
 					 </div>
 				</div>
 
@@ -237,14 +237,17 @@
 $(document).ready(function(){
 	$('.updateForm').each(function(){
 		$(this).ajaxForm(function(data){
+			$('#updateSaveBtn').removeClass('disabled').text('บันทึกข้อมูล');
 			if(data == 'false'){
 				alert('ข้อมูลไม่ตรงตามเงื่อนไข กรุณาตรวจสอบข้อมูล!');
 			}else{
 				$('.updateForm').trigger('reset');
-				$('#updateSaveBtn').removeClass('dissabled').test();
+				
 			}
 		}).fail(function(){
+
 			alert('Error! กรุณาตรวจสอบการเชื่อต่อ!');
+
 		});
 	});
 });

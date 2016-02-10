@@ -31,11 +31,11 @@
 	 		</div>
 	 		<div class="panel-body">
 	 			<div class="input-group">
-					<span class="input-group-addon" id="basic-addon1">ภาพ</span>
+					<span class="input-group-addon" id="basic-addon1"><div class="input-title">ภาพ</div></span>
 					<input type="file" name="photo" class="form-control">
 				</div>
 				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon1">ชื่อเล่น</span>
+					<span class="input-group-addon" id="basic-addon1"><div class="input-title">ชื่อเล่น</div></span>
 				 	<input type="text" class="form-control" name="nickname" placeholder="เช่น อิชิตัน,โออิชิ" aria-describedby="basic-addon1">
 				</div>
 				<div class="input-group">
