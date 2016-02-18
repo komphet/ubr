@@ -55,9 +55,9 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'ubr',
-            'username'  => 'root',
-            'password'  => 'root',
+            'database'  => 'admin_ubr',
+            'username'  => 'admin_ubr',
+            'password'  => 'AP17714500',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
