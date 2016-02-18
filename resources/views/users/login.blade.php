@@ -17,7 +17,7 @@
 		<div class="col-md-4 col-md-offset-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					ลงชื่อเข้าใช้ Akicosshop
+					ลงชื่อเข้าใช้
 				</div>
 				<div class="panel-body">
 						<?php 
