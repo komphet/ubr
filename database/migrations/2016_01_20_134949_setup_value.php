@@ -41,7 +41,7 @@ class SetupValue extends Migration
               ['id' => '13','idCate' => '1','idKind' => '2','list' => '0','title' => '3','detail' => 'คุณครูสุวิมล โคกคาน,คุณครูกานดา เรืองวานิช,คุณครูพงศกร สุวรรณศรี','slug' => 'CLASS-TEACHER-3-5','input' => 'text','value' => '5','active' => '1','created_at' => '2016-02-08 17:33:16','updated_at' => '2016-02-08 17:35:11'],
               ['id' => '14','idCate' => '1','idKind' => '2','list' => '0','title' => '3','detail' => 'คุณครูประไพ สุโพธิ์ชัย,คุณครูปาริฉัตต์ ไวคำ','slug' => 'CLASS-TEACHER-3-6','input' => 'text','value' => '6','active' => '1','created_at' => '2016-02-08 17:33:55','updated_at' => '2016-02-08 17:35:14'],
               ['id' => '17','idCate' => '1','idKind' => '1','list' => '4','title' => 'เด็กหญิง','detail' => '','slug' => 'TITLE-NAME-MISS-G','input' => 'text','value' => '์Miss.','active' => '1','created_at' => '2016-02-08 17:51:55','updated_at' => '2016-02-08 17:52:38'],
-              ['id' => '18','idCate' => '1','idKind' => '3','list' => '0','title' => 'จำนวนนักเรียน/หน้า','detail' => 'Default','slug' => 'STUDEN-LIST-LIMIT','input' => 'text','value' => '30','active' => '1','created_at' => '2016-02-19 12:00:35','updated_at' => '2016-02-19 20:41:03']
+              ['id' => '18','idCate' => '1','idKind' => '3','list' => '0','title' => 'จำนวนนักเรียน/หน้า','detail' => 'Default','slug' => 'STUDEN-LIST-LIMIT','input' => 'text','value' => '20','active' => '1','created_at' => '2016-02-19 12:00:35','updated_at' => '2016-02-19 20:41:03']
         ]);
     }
 

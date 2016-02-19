@@ -44,6 +44,13 @@
 		 src: url("//{{ $_SERVER['SERVER_NAME'] }}/fonts/browab.woff") /* woff file for modern browsers */
 		}
 
+		body{
+			background: url(//{{ $_SERVER['SERVER_NAME'] }}/picture/bg.jpg) fixed top center;
+		    background-size:cover;
+		    background-repeat: no-repeat;
+		}
+		
+
 
 	</style>
 
