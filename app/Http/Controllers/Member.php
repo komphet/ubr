@@ -103,6 +103,7 @@ class Member extends Controller
                     $updateMember->email = trim($request->get('email'));
                     $updateMember->username = trim($request->get('username'));
                     $updateMember->password = Hash::make(trim($request->get('password')));
+                    $updateMember->active = true;
                     $updateMember->save();
                     $log = new Log;
                     $log->memberId = Auth::user()->id;

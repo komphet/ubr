@@ -2,7 +2,7 @@
 
 				<table class="table table-hover" style="min-width:500px; ">
 					<tr>
-						<td colspan="5" class="warning" align="center">
+						<td colspan="6" class="warning" align="center">
 							พบผลการค้นหาที่ตรงตามเงื่อนไข จำนวน <strong>{{$studenLists->total()}}</strong> รายการ
 						</td>
 					</tr>
@@ -34,7 +34,12 @@
 								@endif
 							"
 							>
-							<td>{!! Form::checkbox("del",$studenList->id,false,array('onclick'=>'event.stopPropagation()')) !!}</td>
+							<td>
+								{!! Form::checkbox("del",$studenList->id,false,array('onclick'=>'event.stopPropagation()')) !!}
+								@if($studenList->active)
+									<span class="glyphicon glyphicon-ok"></span>
+								@endif
+							</td>
 							<td>{{ $studenList->studenNo }}</td>
 							<td>{{ $studenList->idCardNo }}</td>
 							<td>
@@ -51,7 +56,7 @@
 						</tr>
 						@endforeach
 						<tfoot>
-							<td colspan="5" align="center"> 
+							<td colspan="6" align="center"> 
 								<ul class="pagination">
 								@if($totalPage > 1)
 									@if($page > 1)
