@@ -104,6 +104,10 @@ class Member extends Controller
                     $updateMember->username = trim($request->get('username'));
                     $updateMember->password = Hash::make(trim($request->get('password')));
                     $updateMember->save();
+                    $log = new Log;
+                    $log->memberId = Auth::user()->id;
+                    $log->detail = 'Register,'.$updateMember;
+                    $log->save();
                     return redirect('home');
                 }
                 break;
@@ -249,20 +253,11 @@ class Member extends Controller
         $log = new Log;
         $log->memberId = Auth::user()->id;
         if($request->get('id') != ''){
-            $log->detail = 'Update Member id = '.$updateMember->id. 
-                ', class = '.trim($classRoom[0]).
-                ', room = '.trim($classRoom[1]).
-                ', CRNo = '.trim($request->get('CRNo')).
-                ', gradYear = '.trim($request->get('gradYear')).
-                ', studenNo = '.trim($request->get('studenNo')).
-                ', idCardNo = '.trim($request->get('idCardNo')).
-                ', titleName = '.trim($request->get('titleName')).
-                ', name = '.trim($request->get('name')).
-                ', lastname = '.trim($request->get('lastname')).
-                ', admin = '.trim($admin);
+            $log->detail = 'Update Member,'.$updateMember;
         }else{
-            $log->detail = 'Insert Member id = '.$updateMember->id;
+            $log->detail = 'Insert Member,'.$updateMember;
         }
+        
         $log->save();
 
         return 'true';
@@ -282,6 +277,10 @@ class Member extends Controller
         if($id != ''){
             $idArray = explode(',', $id);
             User::destroy($idArray);
+            $log = new Log;
+            $log->memberId = Auth::user()->id;
+            $log->detail = 'Delete Member id = '.$id;
+            $log->save();
             return 'true';
         }
         return 'false';

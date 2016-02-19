@@ -9,7 +9,10 @@ use App\Http\Controllers\Controller;
 use App\SetupCate;
 use App\SetupKind;
 use App\SetupValue;
+use App\Log;
 use Validator;
+use Auth;
+
 
 class admin extends Controller
 {
@@ -193,12 +196,17 @@ class admin extends Controller
                             }
                             break;
                     }
+                    $log = new Log;
+                    $log->memberId = Auth::user()->id;
+                    $log->detail = 'Update Setup,'.$update;
+                    $log->save();
                     return 'true';
                 }
     }
 
     public function setupInsert(Request $request)
     {
+                    
         switch (strtolower($request->get('table'))) {
             case 'value':
                 $valueInsActive = $request->get('valueInsActive');
@@ -227,11 +235,6 @@ class admin extends Controller
                     $insertValue->active = trim($request->get('active'));
                     $insertValue->input = trim($input);
                     $insertValue->save();
-                    if($insertValue != ''){
-                        return 'true';
-                    }else{
-                        return 'false';
-                    }
                     
                 }
                 break;
@@ -253,13 +256,7 @@ class admin extends Controller
                     $insertValue->detail = trim($request->get('detail'));
                     $insertValue->slug = trim(strtoupper($request->get('slug')));
                     $insertValue->active = trim($request->get('active'));
-                    $insertValue->save();
-                    if($insertValue != ''){
-                        return 'true';
-                    }else{
-                        return 'false';
-                    }
-                    
+                    $insertValue->save();    
                 }
 
                 break;
@@ -280,15 +277,20 @@ class admin extends Controller
                     $insertValue->slug = trim(strtoupper($request->get('slug')));
                     $insertValue->active = trim($request->get('active'));
                     $insertValue->save();
-                    if($insertValue != ''){
-                        return 'true';
-                    }else{
-                        return 'false';
-                    }
+                    
                     
                 }
 
                 break;
+        }
+        $log = new Log;
+        $log->memberId = Auth::user()->id;
+        $log->detail = 'Insert Setup,'.$insertValue;
+        $log->save();
+        if($insertValue != ''){
+               return 'true';
+        }else{
+            return 'false';
         }
         
     }
@@ -316,6 +318,11 @@ class admin extends Controller
                     SetupValue::find($request->get('id'))->delete();
                     break;
             }
+            $log = new Log;
+            $log->memberId = Auth::user()->id;
+            $log->detail = 'Delete Setup table = '.strtolower($request->get('table')).
+                            ', id ='.trim($request->get('id'));
+            $log->save();
             
             return $request->get('id');
         }
