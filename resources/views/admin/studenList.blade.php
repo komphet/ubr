@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
  <li><a href="{{ route('member') }}">{{ Auth::user()->username }}</a></li>
- <li><a href="{{ route('insertStuden') }}">เพิ่มข้อมูลนักเรียน</a></li>
+ <li><a href="{{ route('studen') }}">เพิ่มข้อมูลนักเรียน</a></li>
 @endsection 
 
 @section('content')
@@ -105,7 +105,7 @@
 						ค้นหา
 					</div>
 					<div class="col-md-3">
-						<select class="form-control" name="seachType">
+						<select class="form-control input-sm" name="seachType">
 							<option value="studenNo">รหัสนักเรียน</option>
 							<option value="idCardNo">รหัสประชาชน</option>
 							<option value="name">ชื่อ-นามสกุล</option>
@@ -121,64 +121,27 @@
 							<option value="email">email</option>
 						</select>
 					</div>
-					<div class="col-md-6">
-						{!! Form::text('seachText','',array('class'=>'form-control','placeholder'=>'คำค้นหา')) !!}
+					<div class="col-md-5">
+						<div class="input-group">
+							{!! Form::text('seachText','',array('class'=>'form-control input-sm','placeholder'=>'คำค้นหา')) !!}
+							<span class="input-group-btn">
+								<button class="btn btn-success input-sm" style="width:100%;">ค้นหา</button>
+							</span>
+						</div>
 					</div>
-					<div class="col-md-2" align="right">
-						<button class="btn btn-success" style="width:100%;">
-							ค้นหา
-						</button>
+					<div class="col-md-3">
+						<div class="input-group">
+							{!! Form::text('seachText',$studenListLimit,array('class'=>'form-control input-sm','placeholder'=>'จำนวน','style'=>'text-align:center;')) !!}
+							<span class="input-group-addon">ชื่อ/หน้า</span>
+						</div>
+						
 					</div>
 				</div>
 				
 			</div>
-			
-				<table class="table table-hover" style="width:100%;">
-					<tr>
-						<th>รหัสนักเรียน</th>
-						<th>รหัสประชาชน</th>
-						<th>ชื่อ-นามสกุล</th>
-						<th>ชั้น</th>
-						<th>เลขที่</th>
-					</tr>
-					
-						@foreach($studenLists as $studenList)
-						<tr id="list-{{ $studenList->id }}" 
-							data-gradYear="{{ $studenList->gradYear }}"
-							data-class="{{ $studenList->class }}"
-							data-room="{{ $studenList->room }}"
-							data-CRNo="{{ $studenList->CRNo }}"
-							data-studenNo="{{ $studenList->studenNo }}"
-							data-idCardNo="{{ $studenList->idCardNo }}"
-							data-titleName="{{ $studenList->titleName }}"
-							data-name="{{ $studenList->name }}"
-							data-lastname="{{ $studenList->lastname }}"
-							data-admin="{{ $studenList->admin }}"
-							onclick="updateStuden('{{ $studenList->id }}');"
-							class="studenList 
-								@if($studenList->admin)
-									info
-								@endif
-							"
-							>
-							<td>{{ $studenList->studenNo }}</td>
-							<td>{{ $studenList->idCardNo }}</td>
-							<td>
-								<table width="100%">
-									<tr>										
-										<td width="20%">{{ $studenList->titleName }}</td>
-										<td width="40%">{{ $studenList->name }}</td>
-										<td width="40%">{{ $studenList->lastname }}</td>
-									</tr>
-								</table>
-							</td>
-							<td>{{ $studenList->class }}/{{ $studenList->room }}</td>
-							<td>{{ $studenList->CRNo }}</td>
-						</tr>
-						@endforeach
-						
-					
-				</table>
+			<div class="panel-body search-result" style="margin: 0; padding: 0; width: 100%; overflow: auto;">
+				
+			</div>
 			
 		</div>
 	</div>
@@ -235,6 +198,10 @@
 	}
 
 $(document).ready(function(){
+
+
+	$('.search-result').load('http://ubr.local/admin/studen/view');
+
 	$('.updateForm').each(function(){
 		$(this).ajaxForm(function(data){
 			$('#updateSaveBtn').removeClass('disabled').text('บันทึกข้อมูล');

@@ -18,6 +18,8 @@ class admin extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $SetupCate = SetupCate::orderBy('list')->get();

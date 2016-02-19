@@ -87,7 +87,7 @@
 			          	<li><a href="{{ route('yearbook') }}">หนังสือรุ่น</a></li>
 			          	@if(Auth::user()->admin)
 			          		<li role="separator" class="divider"></li>
-			          		<li><a href="{{ route('insertStuden') }}">จัดการนักเรียน</a></li>
+			          		<li><a href="{{ route('studen') }}">จัดการนักเรียน</a></li>
 			          		<li><a href="{{ route('admin') }}">ตั้งค่าระบบ</a></li>
 			          	@endif
 			            <li role="separator" class="divider"></li>

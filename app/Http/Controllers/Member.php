@@ -22,12 +22,15 @@ class Member extends Controller
     protected $agreement = null;
     protected $classTeacher = null;
     protected $titleName = null;
+    protected $studenListLimit = null;
 
     public function __construct(){
         //$agreement = SetupValue::where('slug','AGREEMENT')->first()->value;
         //$this->agreement = $agreement;
         $this->classTeacher = SetupValue::where('slug','like','CLASS-TEACHER-%')->orderby('list')->get();
         $this->titleName = SetupValue::where('slug','like','TITLE-NAME-%')->orderby('list')->get();
+        $this->studenListLimit = SetupValue::where('slug','STUDEN-LIST-LIMIT')->first()->value;
+
     }
 
 
@@ -144,16 +147,45 @@ class Member extends Controller
         }
     }
 
-
-
+    
     public function studenList(){
        
-        $studenList = User::orderby('class')->orderby('room')->orderby('CRNo')->get();
+        
+        
         return view('admin.studenList')
                     ->with('classTeachers',$this->classTeacher)
                     ->with('titleNames',$this->titleName)
-                    ->with('studenLists',$studenList)
+                    ->with('studenListLimit',$this->studenListLimit)
         ;
+    }
+
+    public function studenListView(Request $request){
+        $limit = ($request->get('limit') != '')?$request->get('limit'):$this->studenListLimit;
+        $page = ($request->get('page') != '')?$request->get('page'):1;
+        $goTo = ($page-1)*$limit;
+        $studenList = ($request->get('key') == '')?
+                        User::orderby('class')->orderby('room')->orderby('CRNo'):
+                        //not null
+                        ''
+                        ;
+
+        $studenCount = $studenList->count();
+        $totalPage = ceil($studenCount/$limit);
+        $studenList = $studenList->skip($goTo)->take($limit);
+        $back = $page-1;
+        $next = $page+1;
+        return view('admin.studenListView')
+                    ->with('studenLists',$studenList->get())
+                    ->with('limit',$limit)
+                    ->with('page',$page)
+                    ->with('goTo',$goTo)
+                    ->with('studenCount',$studenCount)
+                    ->with('totalPage',$totalPage)
+                    ->with('back',$back)
+                    ->with('next',$next)
+                    ->with('key',$request->get('key'))
+                    ;
+
     }
 
 
@@ -218,5 +250,7 @@ class Member extends Controller
                 ->with('titleNames',$this->titleName)
                 ;
     }
+
+
 
 }
