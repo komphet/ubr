@@ -9,12 +9,15 @@ use App\Http\Controllers\Controller;
 use Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Auth;
 use DB;
 use Hash;
 use App\User;
 use App;
 use App\SetupValue;
+use App\Log;
 
 
 class Member extends Controller
@@ -160,31 +163,38 @@ class Member extends Controller
     }
 
     public function studenListView(Request $request){
+        $key = $request->get('key');
+        $column = $request->get('column');
         $limit = ($request->get('limit') != '')?$request->get('limit'):$this->studenListLimit;
-        $page = ($request->get('page') != '')?$request->get('page'):1;
-        $goTo = ($page-1)*$limit;
-        $studenList = ($request->get('key') == '')?
-                        User::orderby('class')->orderby('room')->orderby('CRNo'):
-                        //not null
-                        ''
-                        ;
+ 
+        if($key != ''){
+            if(preg_match('/[0-9]\/[0-9]/',$key)){
+                $classRoomExplode = explode('/',$key);
+                $studenLists = User::where('class',$classRoomExplode[0])
+                            ->where('room',$classRoomExplode[1])
+                            ->orderby('class')
+                            ->orderby('room')
+                            ->orderby('CRNo')
+                            ->paginate($limit);
+            }else{
+                $studenLists = User::where($column,$key)
+                                ->orderby('class')
+                                ->orderby('room')
+                                ->orderby('CRNo')
+                                ->paginate($limit);
+            }
 
-        $studenCount = $studenList->count();
-        $totalPage = ceil($studenCount/$limit);
-        $studenList = $studenList->skip($goTo)->take($limit);
-        $back = $page-1;
-        $next = $page+1;
-        return view('admin.studenListView')
-                    ->with('studenLists',$studenList->get())
-                    ->with('limit',$limit)
-                    ->with('page',$page)
-                    ->with('goTo',$goTo)
-                    ->with('studenCount',$studenCount)
-                    ->with('totalPage',$totalPage)
-                    ->with('back',$back)
-                    ->with('next',$next)
-                    ->with('key',$request->get('key'))
-                    ;
+        }else{
+         $studenLists = User::orderby('class')->orderby('room')->orderby('CRNo')->paginate($limit);
+        }
+        //dd($studenLists);
+        $page = $studenLists->currentPage();
+        $totalPage = $studenLists->lastPage();
+        if($request->get('page') > $totalPage){
+            return redirect()->route('studenView',['page'=>$totalPage,'limit'=>$limit,'column'=>$column,'key'=>$key]);
+        }
+
+        return view('admin.studenListView',compact('studenLists','limit','key','page','totalPage','column'));
 
     }
 
@@ -235,11 +245,27 @@ class Member extends Controller
         $updateMember->admin = trim($admin);
         $updateMember->save();
 
-        if($updateMember != ''){
-            return 'true';
+
+        $log = new Log;
+        $log->memberId = Auth::user()->id;
+        if($request->get('id') != ''){
+            $log->detail = 'Update Member id = '.$updateMember->id. 
+                ', class = '.trim($classRoom[0]).
+                ', room = '.trim($classRoom[1]).
+                ', CRNo = '.trim($request->get('CRNo')).
+                ', gradYear = '.trim($request->get('gradYear')).
+                ', studenNo = '.trim($request->get('studenNo')).
+                ', idCardNo = '.trim($request->get('idCardNo')).
+                ', titleName = '.trim($request->get('titleName')).
+                ', name = '.trim($request->get('name')).
+                ', lastname = '.trim($request->get('lastname')).
+                ', admin = '.trim($admin);
         }else{
-            return 'true';
+            $log->detail = 'Insert Member id = '.$updateMember->id;
         }
+        $log->save();
+
+        return 'true';
         
     }
 
@@ -249,6 +275,16 @@ class Member extends Controller
                 ->with('classTeachers',$this->classTeacher)
                 ->with('titleNames',$this->titleName)
                 ;
+    }
+
+    public function studenDel(Request $request){
+        $id = $request->get('id');
+        if($id != ''){
+            $idArray = explode(',', $id);
+            User::destroy($idArray);
+            return 'true';
+        }
+        return 'false';
     }
 
 

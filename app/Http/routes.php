@@ -38,6 +38,7 @@ Route::post('admin/setup/del/',['middleware'=>'admin','as' => 'adminSetupDel','u
 Route::get('admin/studen',['middleware'=>'admin','as'=>'studen','uses'=>'Member@studenList']);
 Route::post('admin/studen',['middleware'=>'admin','as'=>'studen','uses'=>'Member@studenUpdate']);
 Route::get('admin/studen/view',['middleware'=>'admin','as'=>'studenView','uses'=>'Member@studenListView']);
+Route::get('admin/studen/del',['middleware'=>'admin','as'=>'studenDel','uses'=>'Member@studenDel']);
 
 
 

@@ -1,7 +1,13 @@
 
 
-				<table class="table table-hover" style="min-width:500px;">
+				<table class="table table-hover" style="min-width:500px; ">
 					<tr>
+						<td colspan="5" class="warning" align="center">
+							พบผลการค้นหาที่ตรงตามเงื่อนไข จำนวน <strong>{{$studenLists->total()}}</strong> รายการ
+						</td>
+					</tr>
+					<tr>
+						<th>{!! Form::checkbox("delAll",'',false,array('onclick'=>'seleteDel()')) !!} <a onclick="delStuden()">[ลบ]</a></th>
 						<th>รหัสนักเรียน</th>
 						<th>รหัสประชาชน</th>
 						<th>ชื่อ-นามสกุล</th>
@@ -28,6 +34,7 @@
 								@endif
 							"
 							>
+							<td>{!! Form::checkbox("del",$studenList->id,false,array('onclick'=>'event.stopPropagation()')) !!}</td>
 							<td>{{ $studenList->studenNo }}</td>
 							<td>{{ $studenList->idCardNo }}</td>
 							<td>
@@ -43,20 +50,30 @@
 							<td>{{ $studenList->CRNo }}</td>
 						</tr>
 						@endforeach
+						<tfoot>
+							<td colspan="5" align="center"> 
+								<ul class="pagination">
+								@if($totalPage > 1)
+									@if($page > 1)
+										<li><a onclick="pagination('{{$page-1}}','{{$column}}','{{$key}}')"> &laquo; </a></li>
+									@endif
+									@for($i=1;$i<=$totalPage;$i++)
 					
-				</table>
-				<ul class="pagination">
-					<li><a href="?page=1&limit={{$limit}}&key={{$key}}"> First </a></li>
-					@if($page > 1)
-						<li><a href="?page={{$back}}&limit={{$limit}}&key={{$key}}"> &laquo; </a></li>
-					@endif
-					@for($i=1;$i<=$totalPage;$i++)
-	
-							<li <?php if($i == $page) echo 'class="active"'; ?>><a href="?page={{$i}}&limit={{$limit}}&key={{$key}}"> {{$i}} </a></li>
-					@endfor
+											<li <?php if($i == $page) echo 'class="active"'; ?>>
+											<a 
+												@if($i != $page)
+												onclick="pagination('{{$i}}','{{$column}}','{{$key}}')"
+												@endif
+											> {{$i}} </a>
+											</li>
+									@endfor
 
-					@if($page != $totalPage)
-						<li><a href="?page={{$next}}&limit={{$limit}}&key={{$key}}"> &raquo; </a></li>
-					@endif
-					<li><a href="?page={{$totalPage}}&limit={{$limit}}&key={{$key}}"> Last </a></li>
-				</ul>
+									@if($page != $totalPage)
+										<li><a onclick="pagination('{{$page+1}}','{{$column}}','{{$key}}')"> &raquo; </a></li>
+									@endif
+								@endif
+								</ul>
+							</td>
+						</tfoot>
+				</table>
+			
