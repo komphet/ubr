@@ -80,6 +80,7 @@ class Member extends Controller
                     'name' => 'required',
                     'lastname' => 'required',
                     'address' => 'required',
+                    'birthday' => 'required|date_format:Y-m-d',
                     //'contact' => 'required',
                     'email' => 'required|email|unique:member,email',
                     'username' => 'required|alpha_num|min:4|max:200|unique:member,username',
@@ -97,6 +98,8 @@ class Member extends Controller
                     $updateMember->titleName = trim($request->get('titleName'));
                     $updateMember->name = trim($request->get('name'));
                     $updateMember->lastname = trim($request->get('lastname'));
+                    $updateMember->nickname = trim($request->get('nickname'));
+                    $updateMember->birthday = trim($request->get('birthday'));
                     $updateMember->address = trim($request->get('address'));
                     $updateMember->tel = trim($request->get('tel'));
                     $updateMember->contact = trim($request->get('contact'));
@@ -106,7 +109,7 @@ class Member extends Controller
                     $updateMember->active = true;
                     $updateMember->save();
                     $log = new Log;
-                    $log->memberId = Auth::user()->id;
+                    $log->memberId = $updateMember->id;
                     $log->detail = 'Register,'.$updateMember;
                     $log->save();
                     return redirect('home');

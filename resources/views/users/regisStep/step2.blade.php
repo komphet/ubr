@@ -70,10 +70,23 @@
 								<div class="col-sm-12 col-md-5">
 							 		{!! Form::text('lastname',$memberDetail->lastname,array('class' => 'form-control','placeholder' => 'นามสกุล')) !!}	
 								</div>
+								
 								<div class="col-sm-12">
 									<div class="input-group">
 										<span class="input-group-addon">ที่อยู่</span>
 							 			{!! Form::text('address',$memberDetail->address,array('class' => 'form-control','placeholder' => 'บ้านเลขที่,หมู่,หมู่บ้าน,ตำบล,อำเภอ,จังหวัด,รหัสไปรษณีย์')) !!}	
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span class="input-group-addon">ชื่อเล่น</span>
+							 			{!! Form::text('nickname',$memberDetail->nickname,array('class' => 'form-control','placeholder' => 'เช่น ฟ้าใส')) !!}	
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span class="input-group-addon">วันเกิด</span>
+							 			{!! Form::text('birthday',$memberDetail->birthday,array('class' => 'datepicker form-control','placeholder' => 'ปีคศ./เดือน/วัน เช่น 1996/01/05')) !!}	
 									</div>
 								</div>
 								<div class="col-sm-6">
@@ -161,6 +174,7 @@ $(document).ready(function(){
 		$(this).val('Loading.....').addClass('disabled');
 
 	});
+
 });
 </script>
 @endsection
