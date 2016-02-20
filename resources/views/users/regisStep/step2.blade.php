@@ -86,7 +86,7 @@
 								<div class="col-sm-6">
 									<div class="input-group">
 										<span class="input-group-addon">วันเกิด</span>
-							 			{!! Form::text('birthday',$memberDetail->birthday,array('class' => 'datepicker form-control','placeholder' => 'ปีคศ./เดือน/วัน เช่น 1996/01/05')) !!}	
+							 			{!! Form::text('birthday','',array('class' => 'datepicker form-control','placeholder' => 'ปีคศ./เดือน/วัน เช่น 1996/01/05')) !!}	
 									</div>
 								</div>
 								<div class="col-sm-6">
