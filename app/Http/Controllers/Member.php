@@ -180,20 +180,23 @@ class Member extends Controller
                 $classRoomExplode = explode('/',$key);
                 $studenLists = User::where('class',$classRoomExplode[0])
                             ->where('room',$classRoomExplode[1])
-                            ->orderby('class')
-                            ->orderby('room')
-                            ->orderby('CRNo')
+                            ->orderBy('class', 'asc')
+                            ->orderBy('room', 'asc')
+                            ->orderBy('CRNo', 'desc')
                             ->paginate($limit);
             }else{
                 $studenLists = User::where($column,$key)
-                                ->orderby('class')
-                                ->orderby('room')
-                                ->orderby('CRNo')
+                                ->orderBy('class', 'asc')
+                                ->orderBy('room', 'asc')
+                                ->orderBy('CRNo', 'desc')
                                 ->paginate($limit);
             }
 
         }else{
-         $studenLists = User::orderby('class')->orderby('room')->orderby('CRNo')->paginate($limit);
+         $studenLists = User::orderBy('class', 'asc')
+                        ->orderBy('room', 'asc')
+                        ->orderBy('CRNo', 'desc')
+                        ->paginate($limit);
         }
         //dd($studenLists);
         $page = $studenLists->currentPage();
