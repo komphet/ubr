@@ -182,20 +182,20 @@ class Member extends Controller
                             ->where('room',$classRoomExplode[1])
                             ->orderBy('class', 'asc')
                             ->orderBy('room', 'asc')
-                            ->orderBy('CRNo', 'desc')
+                            ->orderBy('CRNo', 'asc')
                             ->paginate($limit);
             }else{
                 $studenLists = User::where($column,$key)
                                 ->orderBy('class', 'asc')
                                 ->orderBy('room', 'asc')
-                                ->orderBy('CRNo', 'desc')
+                                ->orderBy('CRNo', 'asc')
                                 ->paginate($limit);
             }
 
         }else{
          $studenLists = User::orderBy('class', 'asc')
                         ->orderBy('room', 'asc')
-                        ->orderBy('CRNo', 'desc')
+                        ->orderBy('CRNo', 'asc')
                         ->paginate($limit);
         }
         //dd($studenLists);
