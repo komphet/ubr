@@ -4,6 +4,10 @@
 	เพิ่มข้อมูลนักเรียน
 @endsection
 
+@section('studen')
+	active
+@endsection
+
 @section('breadcrumb')
  <li><a href="{{ route('member') }}">{{ Auth::user()->username }}</a></li>
  <li><a href="{{ route('studen') }}">เพิ่มข้อมูลนักเรียน</a></li>

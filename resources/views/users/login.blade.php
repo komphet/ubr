@@ -57,7 +57,7 @@
 							{!! Form::submit('ลงชื่อเข้าใช้',array('class'=>'btn btn-primary','style' => 'width:100%;')) !!} 
 						</div>
 						<div class="margin-top text" align="center">
-							{!! Form::checkbox('remember','true') !!}ลงชื่อเข้าใช้เสมอ | {!! link_to('password/email','ลืมรหัสผ่าน') !!} หรือ {!! link_to_route('register','ลงทะเบียน') !!}
+							{!! Form::checkbox('remember','true') !!}ลงชื่อเข้าใช้เสมอ | {!! link_to_route('forgetpass','ลืมรหัสผ่าน') !!} หรือ {!! link_to_route('register','ลงทะเบียน') !!}
 						</div>
 						
 					{!! Form::close() !!}

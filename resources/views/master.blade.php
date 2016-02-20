@@ -82,6 +82,16 @@
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		      	@if(Auth::check())
+		      		<li class="@yield('member')"><a href="{{ route('member') }}">สมาชิก</a></li>
+			        <li class="@yield('yearbook')"><a href="{{ route('yearbook') }}">หนังสือรุ่น</a></li>
+			        @if(Auth::user()->admin)
+			          	<li class="@yield('studen')"><a href="{{ route('studen') }}">จัดการนักเรียน</a></li>
+			          	<li class="@yield('admin')"><a href="{{ route('admin') }}">ตั้งค่าระบบ</a></li>
+			        @endif
+		      	@endif
+		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
 		        @if(Auth::check())
 		        	<li class="dropdown">
@@ -90,14 +100,6 @@
 			           <span class="caret"></span>
 			           </a>
 			          <ul class="dropdown-menu">
-			          	<li><a href="{{ route('member') }}">ข้อมูลสมาชิก</a></li>
-			          	<li><a href="{{ route('yearbook') }}">หนังสือรุ่น</a></li>
-			          	@if(Auth::user()->admin)
-			          		<li role="separator" class="divider"></li>
-			          		<li><a href="{{ route('studen') }}">จัดการนักเรียน</a></li>
-			          		<li><a href="{{ route('admin') }}">ตั้งค่าระบบ</a></li>
-			          	@endif
-			            <li role="separator" class="divider"></li>
 			            <li><a href="//{{$_SERVER['SERVER_NAME']}}/logout">ลงชื่อออก</a></li>
 			          </ul>
 			        </li>
@@ -105,8 +107,9 @@
 
 		        	
 		        @else
-		        	<li class="@yield('register')" ><a href="/register">ลงทะเบียน</a></li>
-		        	<li class="@yield('login')" ><a href="/login">ลงชื่อเข้าใช้</a></li>
+		        	<li class="@yield('register')" ><a href="{{route('register')}}">ลงทะเบียน</a></li>
+		        	<li class="@yield('login')" ><a href="{{route('login')}}">ลงชื่อเข้าใช้</a></li>
+		        	<li class="@yield('forgetpass')" ><a href="{{route('forgetpass')}}">ลืมรหัสผ่าน</a></li>
 		        @endif
 		      </ul>
 		    </div><!-- /.navbar-collapse -->

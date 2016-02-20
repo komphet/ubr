@@ -4,6 +4,10 @@
 	ข้อมูลสมาชิก
 @endsection
 
+@section('member')
+	active
+@endsection
+
 @section('breadcrumb')
 	<li><a href="{{ route('member') }}">ข้อมูลสมาชิก</a></li>
 @endsection
@@ -27,7 +31,10 @@
 <div class="row">
 	<div class="col-md-2 col-sm-4">
 		<ul class="list-group">
-		  <li class="list-group-item" align="center">ภาพ</li>
+		  <li class="list-group-item" align="center">
+		  	<img class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/{{Auth::user()->picture}}">
+
+		  </li>
 		  <a href="{{ route('member') }}" class="list-group-item <?php if(!isset($_GET['action'])) echo 'active'; ?>" >สมาชิก</a></li>			  				  
 		  <a href="?action=1" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 1) echo 'active';} ?>" >เปลี่ยนภาพ</a></li>
 		  <a href="?action=2" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 2) echo 'active';} ?>" >แก้ไขข้อมูล</a></li>

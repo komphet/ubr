@@ -42,7 +42,16 @@
 					{!! Form::hidden('id',$memberDetail->id) !!}
 						<fieldset>
 							<legend>ยืนยันข้อมูลนักเรียน <span style="color:red;font-size:0.7em">* จำเป็นต้องระบุข้อมูล</span></legend>
-							
+							@if(count($errors) > 0)
+							<div class="alert alert-danger">
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								
+								@foreach($errors->all() as $message)
+									<b>{{$message}}</b><br>
+								@endforeach
+								
+							</div>
+							@endif
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="alert alert-info" align="center">
@@ -60,8 +69,9 @@
 								</div>
 								<div class="col-sm-12 col-md-3">
 									<select name="titleName" class="form-control">
-										<option <?php if($memberDetail->titleName == 'นาย') echo 'selected'; ?> value="นาย">นาย</option>
-										<option <?php if($memberDetail->titleName == 'นางสาว') echo 'selected'; ?> value="นางสาว">นางสาว</option>
+										@foreach($titleNames as $titleName)
+									    	<option <?php if($memberDetail->titleName == $titleName->title) echo 'selected'; ?> value="{{$titleName->title}}">{{$titleName->title}}</option>
+									    @endforeach
 									</select>
 								</div>
 								<div class="col-sm-12 col-md-4">
@@ -86,7 +96,11 @@
 								<div class="col-sm-6">
 									<div class="input-group">
 										<span class="input-group-addon">วันเกิด</span>
-							 			{!! Form::text('birthday','',array('class' => 'datepicker form-control','placeholder' => 'ปีคศ./เดือน/วัน เช่น 1996/01/05')) !!}	
+										<?php
+											$birthday = ($memberDetail->birthday != '0000-00-00')?
+															$memberDetail->birthday:'';
+										?>
+							 			{!! Form::text('birthday',$birthday,array('class' => 'datepicker form-control','placeholder' => 'ปีคศ./เดือน/วัน เช่น 1996/01/05')) !!}	
 									</div>
 								</div>
 								<div class="col-sm-6">
@@ -149,17 +163,6 @@
 							</div>
 						</fieldset>
 					{!! Form::close() !!}
-					
-					@if(count($errors->getMessages()) != 0)
-					<div class="alert alert-danger" align="center">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						@foreach($errors->getMessages() as $error)
-							@foreach($error as $message)
-								<b>{{$message}}</b>
-							@endforeach
-						@endforeach
-					</div>
-					@endif
 
 					
 				</div>

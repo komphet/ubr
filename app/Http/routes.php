@@ -19,12 +19,16 @@ Route::get('register',['middleware'=>'guest','as' => 'register','uses'=>'Member@
 
 
 Route::post('register',['middleware'=>'guest','as' => 'register','uses'=>'Member@register']);
+
 Route::get('login',['middleware'=>'guest','as'=>'login','uses'=>'Member@loginForm']);
 Route::post('login','Member@login');
 Route::get('logout',function(){
 	Auth::logout();
 	return Redirect::to('/');
 });
+
+Route::get('forgetpass',['middleware'=>'guest','as' => 'forgetpass','uses'=>'Member@forgetpass']);
+Route::post('forgetpass',['middleware'=>'guest','as' => 'resetpass','uses'=>'Member@resetpass']);
 
 
 //Admin

@@ -4,6 +4,10 @@
 	หนังสือรุ่น
 @endsection
 
+@section('yearbook')
+	active
+@endsection
+
 @section('breadcrumb')
  <li><a href="{{ route('yearbook') }}">หนังสือรุ่น</a></li>
 @endsection 
@@ -82,11 +86,11 @@
 	 	</div>
 	</div>
 	<div class="col-sm-6">
-		<div class="panel panel-primary">
-	 		<div class="panel-heading">
-	 			ภาพ
-	 		</div>	 			
-	 	</div>
+		@if((Auth::user()->CRNo%2) == 0)
+			<img class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/y2.jpg">
+		@else
+			<img class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/y1.jpg">
+		@endif
 	</div>	
 </div>
 

@@ -4,6 +4,10 @@
 	Setup
 @endsection
 
+@section('admin')
+	active
+@endsection
+
 @section('breadcrumb')
  <li><a href="{{ route('member') }}">{{ Auth::user()->username }}</a></li>
  <li><a href="{{ route('admin') }}">Admin</a></li>

@@ -57,7 +57,9 @@ class Member extends Controller
                         return View('users.regisStep.step2')
                             ->with('agreement',$this->agreement)
                             ->with('request',$request->all())
-                            ->with('memberDetail',$memberDetail);
+                            ->with('memberDetail',$memberDetail)
+                            ->with('titleNames',$this->titleName)
+                            ;
                     }else{
                         return redirect(route('register'))
                                 ->with('agreement',$this->agreement)
@@ -75,6 +77,16 @@ class Member extends Controller
                 
                 break;
             case '3':
+                $messages = [
+                    'required' => ':attribute จำเป็นต้องระบุข้อมูล!',
+                    'date_format' => 'รูปแบบวันที่ไม่ถูกต้อง! กรุณาระบุ ปีคศ-เดือน-วัน เท่านั้น!',
+                    'email' => 'Email ไม่ถูกต้อง!',
+                    'unique' => ':attribute มีผู้ใช้งานแล้ว!',
+                    'alpha_num' => ':attribute กรุณาระบุตัวเลขหรือตัวอักษรเท่านั้น!',
+                    'between' => ':attribute ต้องอยู่ระหว่าง :min ถึง :max ตัวอักษรเท่านั้น!',
+                    'confirmed' => 'รหัสผ่านไม่ตรงกัน!',
+                    'min' => ':attribute วันที่ไม่ถูกต้อง!',
+                ];
                 $validator = Validator::make($request->all(),[
                     'titleName' => 'required',
                     'name' => 'required',
@@ -83,15 +95,15 @@ class Member extends Controller
                     'birthday' => 'required|date_format:Y-m-d',
                     //'contact' => 'required',
                     'email' => 'required|email|unique:member,email',
-                    'username' => 'required|alpha_num|min:4|max:200|unique:member,username',
-                    'password' => 'required|min:4|max:200|confirmed',
-                    'password_confirmation' => 'required|min:4|max:200',
+                    'username' => 'required|alpha_num|between:4,200|unique:member,username',
+                    'password' => 'required|between:4,200|confirmed',
+                    'password_confirmation' => 'required|between:4,200',
 
-                ]);
+                ],$messages);
                 if ($validator->fails()) {
                     return redirect(route('register',['step' =>'2','number'=>$request->get('number')]))
                                     ->withInput()
-                                    ->withErrors('ข้อมูลไม่ถูกต้อง! หรือ Username/Email มีผู้ใช้งานแล้ว!');
+                                    ->withErrors($validator->errors());
                                     ;
                 }else{
                     $updateMember = User::find(trim($request->get('id')));
@@ -112,7 +124,7 @@ class Member extends Controller
                     $log->memberId = $updateMember->id;
                     $log->detail = 'Register,'.$updateMember;
                     $log->save();
-                    return redirect('home');
+                    return Redirect::route('login');
                 }
                 break;
             default:
@@ -148,7 +160,7 @@ class Member extends Controller
             if($request->get('redirect') != ''){
                 return Redirect::to($request->get('redirect'));
             }else{
-                return Redirect::to('home');
+                return Redirect::route('member');
             }
         }else{
             $errors['username'] =  'ชื่อผู้ใช้หรือรหัสผ่านผิดพลาด';
@@ -156,6 +168,42 @@ class Member extends Controller
 
             return Redirect::to('login')->withErrors($errors)->withInput(); 
         }
+    }
+
+    public function forgetpass(){
+        return view('users.forgetpass');
+    }
+
+    public function resetpass(Request $request){
+        $messages = [
+            'required' => ':attribute จำเป็นต้องระบุข้อมูล!',
+            'exists' => ':attribute ไม่พบข้อมูลในฐานข้อมูล!',
+        ];
+        $validator = Validator::make($request->all(),[
+            'input1' => 'required|exists:member,'.$request->get('column1'),
+            'input2' => 'required|exists:member,'.$request->get('column2')
+        ],$messages);
+
+        if($validator->fails()){
+            return Redirect::to('forgetpass')->withErrors($validator->errors());
+        }
+
+        $resetpass = User::where($request->get('column1'),trim($request->get('input1')))
+                        ->where($request->get('column2'),trim($request->get('input2')))->first();
+        $resetpass->username = '';
+        $resetpass->password = '';
+        $resetpass->email = '';
+        $resetpass->active = false;
+        $resetpass->save();
+
+        $log = new Log;
+        $log->memberId = $resetpass->id;
+        $log->detail = 'Reset Password,'.$resetpass;
+        $log->save();
+
+        return Redirect::route('register');
+
+
     }
 
     
@@ -292,6 +340,8 @@ class Member extends Controller
         }
         return 'false';
     }
+
+
 
 
 
