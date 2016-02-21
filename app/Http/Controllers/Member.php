@@ -341,7 +341,42 @@ class Member extends Controller
         return 'false';
     }
 
+    public function uploadPic(Request $request)
+    {
 
+        $filePic = $request->get('picture');
+        $filePicExplode = explode(',', $filePic);
+        $filePic = $filePicExplode[1];
+        $filePic = base64_decode($filePic);
+        
+        $dir = 'uploads/class-'.Auth::user()->class.'/room-'.Auth::user()->room;
+
+        if (!file_exists($dir)){
+            mkdir($dir, 0777, true);
+        }
+
+        $filename = 'pic-'.Auth::user()->CRNo.'-'.Auth::user()->id.".jpg";
+
+        $file_put_contents = file_put_contents($dir.'/'.$filename, $filePic);
+
+        if($file_put_contents != 0 | $file_put_contents != 1){
+            $user_update = User::find(Auth::user()->id);
+            $user_update->picture = $dir.'/'.$filename;
+            $user_update->save();
+            
+            $log = new Log;
+            $log->memberId = Auth::user()->id;
+            $log->detail = 'Edit Picture,'.$user_update;
+            $log->save();
+
+
+            return $dir.'/'.$filename;
+        }else{
+            return 'false';
+        }
+        
+
+    }
 
 
 

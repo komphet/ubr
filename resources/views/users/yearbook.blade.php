@@ -13,6 +13,9 @@
 @endsection 
 
 @section('content')
+
+
+
 <style type="text/css">
 	.input-group{
 		margin-bottom:5px; 
@@ -38,14 +41,6 @@
 	 				หนังสือรุ่น
 	 		</div>
 	 		<div class="panel-body">
-	 			<div class="input-group">
-					<span class="input-group-addon" id="basic-addon1"><div class="input-title">ภาพ</div></span>
-					<input type="file" name="photo" class="form-control">
-				</div>
-				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon1"><div class="input-title">ชื่อเล่น</div></span>
-				 	<input type="text" class="form-control" name="nickname" placeholder="เช่น อิชิตัน,โออิชิ" aria-describedby="basic-addon1">
-				</div>
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon2"><div class="input-title">แนะนำตัว</div></span>
 					<input type="text" class="form-control" name="aboutMe" placeholder="เช่น สวัสดีฉันชื่ออิชิตัน" aria-describedby="basic-addon2">					
@@ -82,6 +77,7 @@
 					<span class="input-group-addon" id="basic-addon11"><div class="input-title2">อยากบอกโรงเรียนว่า</div></span>
 				 	<input type="text" class="form-control" name="tellSchool" placeholder="เช่น เรียนดีจุงเบย" aria-describedby="basic-addon11">
 		 		</div>
+				
 		 	</div>	 			
 	 	</div>
 	</div>
@@ -93,5 +89,8 @@
 		@endif
 	</div>	
 </div>
+
+
+
 
 @endsection

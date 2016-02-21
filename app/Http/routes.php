@@ -53,3 +53,4 @@ Route::get('member/edit',function(){
 Route::get('member',['middleware'=>'auth','as' => 'member','uses'=>'Member@index']);
 
 Route::get('member/yearbook',['middleware'=>'auth','as'=>'yearbook','uses'=>'Member@yearbook']);
+Route::any('member/upload-pic', ['middleware'=>'auth','as'=>'uploadPic','uses'=>'Member@uploadPic']);

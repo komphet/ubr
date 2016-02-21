@@ -47,14 +47,90 @@
 				@if(isset($_GET['action']))
 					
 					@if($_GET['action'] == 1)
+					<link rel="stylesheet" href="//{{$_SERVER['SERVER_NAME']}}/croppie/croppie.css" />
+					<script src="//{{$_SERVER['SERVER_NAME']}}/croppie/croppie.js"></script>
 					<div class="panel panel-primary">
-						<div class="panel-body">
+						<div id="pictureWidth" class="panel-body">
+							{!! Form::open(['url'=>route('uploadPic'),'id'=>'uploadForm','files' => true]) !!}
+						 	{!! Form::hidden('picture','',['id'=>'pictureUrl']) !!}
 							<div class="input-group">
-							<span class="input-group-addon" id="basic">เลือกภาพ</span>
-								<input type="file" name="photo" class="form-control">
-								<span class="input-group-btn"><button type="submit" class="btn btn-success">อัพโหลดภาพ</button></span>
-							
+								<span class="input-group-addon" id="basic">เลือกภาพ</span>
+								<input id="imgInp" type="file" name="image" class="form-control" >
+								<span class="input-group-btn"><button type="button" class="uploadCrop-result btn btn-success">บันทึกภาพ</button></span>
 							</div>
+							{!! Form::close() !!}
+							<div id="item">
+							</div>
+							<script type="text/javascript">
+								var picUrl = "//{{$_SERVER['SERVER_NAME']}}/{{Auth::user()->picture}}";
+								$('#uploadForm').ajaxForm({
+									success:function(){
+										location.reload();
+									},
+									fail:function(){
+										alert('Error! กรุณาตรวจสอบการเชื่อมต่อ!');
+									}
+								});
+								function uploadCropFunction(){
+									$('#item').text('');
+									var pictureWidth = $('#pictureWidth').width()-80;
+									var PicViewport = (pictureWidth*80)/100;
+									var uploadCrop = $('#item').croppie({
+									    viewport: {
+									        width: PicViewport,
+									        height: PicViewport,
+									        type: 'square'
+									    },
+									    boundary: {
+									        width: pictureWidth,
+									        height: pictureWidth
+									    },
+
+									});
+									uploadCrop.croppie('bind', {
+									    url: picUrl,
+									});
+									$('.uploadCrop-result').unbind().bind('click',function(){
+											uploadCrop.croppie('result', {
+								                type: 'canvas',
+								                size: 'viewport'
+								            }).then(function (src) {
+								            	$('#pictureUrl').val(src);
+								            	$('#uploadForm').submit();
+								            });
+									});
+
+								}
+								uploadCropFunction();
+								$(window).resize(function(){
+									uploadCropFunction();
+								});
+
+								function readURL(input) {
+
+								    if (input.files && input.files[0]) {
+								        var reader = new FileReader();
+
+								        reader.onload = function (e) {
+								        	picUrl = e.target.result;
+								            uploadCropFunction()
+								        }
+
+								        reader.readAsDataURL(input.files[0]);
+								    }
+								}
+
+								$("#imgInp").change(function(){
+								    readURL(this);
+								});
+
+
+								
+
+
+								
+
+							</script>
 						</div>
 					</div>
 
