@@ -1,7 +1,7 @@
-# Webalizer V2.23-05 Incremental Data - 02/19/2016 03:05:36
-2016 2 19 3 5 36
-224 132 10 46 13 8 2670901 115 9 0
-3 49 125 18 19
+# Webalizer V2.23-05 Incremental Data - 02/21/2016 03:16:29
+2016 2 21 3 16 29
+1045 674 28 69 21 21 22379080 623 32 0
+1 62 214 18 21
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -20,7 +20,9 @@
 0 0 0 0 0 0
 0 0 0 0 0 0
 172 101 1935045 7 97 6
-52 31 735856 3 18 3
+202 135 6129702 9 108 10
+580 402 10964927 14 385 15
+91 36 3349406 1 33 1
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -31,57 +33,52 @@
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
+13 3 1954243 4
+41 24 1314323 14
+37 16 1292723 19
+325 206 7965661 156
+214 189 2158343 196
+23 9 83835 11
+28 10 62176 9
 0 0 0 0
+1 1 3927 1
 0 0 0 0
-3 0 13602 3
-49 31 722254 15
+56 23 502454 28
 0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-27 11 309490 19
+28 12 313704 20
 125 71 1020427 73
-0 0 0 0
+4 2 19887 2
 16 15 589564 1
+102 78 1143079 73
+6 6 3857567 3
+2 2 8141 2
 1 1 3855 1
 0 0 0 0
-1 1 3927 1
-1 1 3855 1
 0 0 0 0
-0 0 0 0
-1 1 3927 1
-0 0 0 0
+20 6 38032 7
+3 0 47139 3
 0
 0
 0
-132
-0
-0
-0
+674
 0
 0
 0
 0
 0
-12
+8
 0
-58
+3
+68
 0
-0
-0
-0
-0
-0
-12
+252
 0
 0
 0
+0
+0
+0
+24
 0
 0
 0
@@ -92,110 +89,174 @@
 0
 0
 0
-10
+0
+0
+0
+16
 0
 0
 0
 0
 0
 # -urls- 
+/picture/yearbook/y2.jpg
+1 4 40167600 263556 0 0
 /phpmyadmin/version_check.php
-0 1 27196624 41 0 0
+0 4 0 164 0 0
 /register
-0 8 27196880 49410 0 0
+0 31 0 249642 1 0
 /phpmyadmin/
-0 2 27173968 11980 0 0
+0 15 0 63389 0 0
+/admin/setup/insert
+0 2 0 8 0 0
 /admin/insertstuden
-0 9 27197872 115111 0 0
+0 12 0 149923 1 1
+/picture/yearbook/ubr.jpg
+1 8 40167472 193976 0 0
+/phpmyadmin/themes/pmahomme/jquery/images/ui-bg_flat_75_ffffff_40x100.png
+1 1 40161488 247 0 0
+/admin/studen/del
+0 1 40162496 4 0 0
+/croppie/croppie.css
+0 5 40162608 7004 0 0
 /phpmyadmin/themes/pmahomme/img/logo_left.png
-1 1 27175600 2327 0 0
+1 3 0 6981 0 0
+/phpmyadmin/themes/pmahomme/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+1 1 40161984 319 0 0
+/admin/setup/update
+0 1 0 4 0 0
+/phpmyadmin/themes/pmahomme/img/arrow_ltr.png
+1 2 0 278 0 0
 /bootstrap/fonts/glyphicons-halflings-regular.woff2
-0 3 27197200 18028 0 0
+0 15 0 72112 0 0
 /phpmyadmin/themes/pmahomme/jquery/jquery-ui-1.11.2.css
-0 1 27174080 35212 0 0
+0 4 0 105636 0 0
+/picture/bg.jpg
+1 38 0 9691615 0 0
+/admin/studen/view
+0 140 0 1544567 0 0
 /phpmyadmin/js/get_image.js.php
-0 1 27174832 1822 0 0
+0 5 0 9110 0 0
+/phpmyadmin/themes/pmahomme/img/col_drop.png
+1 1 40160912 132 0 0
 /datepicker/js/bootstrap-datepicker.js
-0 11 27173760 55104 0 0
+0 34 0 137760 0 0
 /phpmyadmin/navigation.php
-0 2 27196752 3438 0 0
+0 6 0 10597 0 0
 /fonts/DSNRBRN_.woff
-0 1 27199664 24728 0 0
+0 1 0 24728 0 0
+/croppie/croppie.js
+0 5 40151920 98590 0 0
 /favicon.ico
-0 1 27205216 0 0 0
+0 18 0 0 0 0
 /fonts/DSNRBRN_.TTF
-0 1 27199440 50876 0 0
+0 1 0 50876 0 0
 /js/script.js
-0 11 27173888 5916 0 0
+0 34 0 14790 0 0
 /js/jquery.form.js
-0 11 27190176 175568 0 0
+0 34 0 438920 0 0
+/phpmyadmin/themes/pmahomme/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png
+1 1 40161808 251 0 0
+/picture/ajax-loader.gif
+1 10 40136224 54095 0 0
+/phpmyadmin/themes/pmahomme/img/col_pointer.png
+1 1 40160992 113 0 0
 /css/css.css
-0 10 27189824 2271 0 0
+0 32 0 6056 0 0
+/admin/studen
+0 88 0 316544 1 0
 /login
-0 5 27196992 27777 0 0
+0 29 0 166408 0 0
 /fonts/ThaiSansNeue-Bold.woff
-0 1 27199312 29552 0 0
+0 1 0 29552 0 0
+/forgetpass
+0 1 40168800 7401 0 0
 /phpmyadmin/js/get_scripts.js.php
-0 4 27174576 466062 0 0
+0 16 0 2094079 0 0
 /fonts/ThaiSansNeue-Bold.eot
-0 1 27199184 65292 0 0
+0 1 0 65292 0 0
+/phpmyadmin/themes/pmahomme/jquery/images/ui-icons_888888_256x240.png
+1 1 0 7092 0 0
 /member
-0 10 27197664 72924 0 0
+0 38 0 290418 0 0
 /phpmyadmin/js/messages.php
-0 2 27174704 14788 0 0
+0 7 0 51758 0 0
 /fonts/browab.eot
-0 1 27199776 75618 0 0
+0 1 0 75618 0 0
 /phpmyadmin/favicon.ico
-0 1 27175488 18902 0 0
+0 1 0 18902 0 0
 /phpmyadmin/db_structure.php
-0 2 27176288 2878 0 0
+0 7 0 12008 0 0
+/phpmyadmin/sql.php
+0 5 40125152 18833 0 0
 /phpmyadmin/themes/pmahomme/img/ajax_clock_small.gif
-1 1 27175856 1810 0 0
+1 3 0 5430 0 0
 /home
-0 8 27197456 36650 0 0
+0 18 0 82015 0 0
 /bootstrap/css/bootstrap.min.css
-0 10 27189488 351915 0 0
+0 32 0 938440 0 0
 /phpmyadmin/phpmyadmin.css.php
-0 2 27174320 42804 0 0
+0 8 0 171216 0 0
 /fonts/DSNRBRN_.eot
-0 1 27199552 51094 0 0
+0 1 0 51094 0 0
 /
-0 21 27189376 79132 7 0
+0 54 0 214310 24 1
 /phpmyadmin/themes/pmahomme/img/logo_right.png
-1 1 27174960 4548 0 0
+1 3 0 13644 0 0
 /member/yearbook
-0 2 27198080 18148 0 0
+0 10 0 90827 0 1
 /bootstrap/js/bootstrap.min.js
-0 11 27190048 143804 0 0
+0 34 0 359510 0 0
 /phpmyadmin/themes/dot.gif
-1 1 27175104 43 0 0
+1 4 0 129 0 0
+/phpmyadmin/themes/pmahomme/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png
+1 1 40162320 301 0 0
 /js/jquery-2.1.4.min.js
-0 11 27189936 337380 0 0
+0 34 0 843450 0 0
 /phpmyadmin/themes/pmahomme/img/s_collapseall.png
-1 1 27176000 170 0 0
+1 3 0 510 0 0
 /phpmyadmin/themes/pmahomme/img/left_nav_bg.png
-1 1 27176144 297 0 0
+1 3 0 891 0 0
 /fonts/browab.woff
-0 1 27200112 39460 0 0
+0 1 0 39460 0 0
 /admin
-0 1 27198288 54280 0 0
+0 7 0 429850 0 0
 /fonts/ThaiSansNeue-Bold.ttf
-0 1 27199056 65088 0 0
+0 1 0 65088 0 0
 /robots.txt
-0 1 27198944 24 0 0
+0 2 0 48 0 0
 /bootstrap/fonts/glyphicons-halflings-regular.woff
-0 1 27206416 23424 0 0
+0 3 0 23424 0 0
 /phpmyadmin/js/whitelist.php
-0 2 27174448 996 0 0
+0 7 0 3486 0 0
 /datepicker/css/datepicker.css
-0 10 27189696 14859 0 0
+0 32 0 39624 0 0
+/phpmyadmin/themes/pmahomme/img/s_fulltext.png
+1 1 40125264 193 0 0
 /phpmyadmin/themes/pmahomme/img/sprites.png
-1 1 27175232 46795 0 0
+1 3 0 140385 0 0
+/phpmyadmin/tbl_replace.php
+0 3 40161360 5352 0 0
 # End Of Table - urls
 # -sites- (monthly)
+216.163.188.228
+0 1 1 4005 1 1455937846
+/
+1.47.106.77
+0 13 11 784124 1 1455933456
+/
+216.163.188.238
+0 1 1 4005 1 1455937917
+/
+li1366-22.members.linode.com
+0 1 1 4214 1 1455971654
+/
 user176.fireeye.com
 0 7 7 294521 0 0
 -
+spider-141-8-143-208.yandex.com
+0 2 2 4238 1 1455993991
+/
 122.155.43.54
 0 15 14 331686 1 1455851075
 /register
@@ -203,81 +264,156 @@ user176.fireeye.com
 0 1 1 3855 1 1455822883
 /
 109-162-125-254-broadband.kyivstar.net
-0 3 0 13602 1 1455849726
+0 6 0 60741 2 1456012477
 -
 122.155.43.16
 0 34 17 390568 1 1455851131
 /admin/insertstuden
+122.155.45.18
+0 21 6 95243 1 1455965145
+/admin/studen/view
 122.155.43.58
 0 152 82 1329917 1 1455802271
 /home
+1.46.12.153
+0 134 92 5065907 2 1455901334
+/admin/studen/view
+122.155.45.233
+0 91 68 489943 1 1455943110
+/admin/studen/view
+91.236.157.29
+0 2 0 9068 1 1455891871
+-
+146.145.dynamic.pppoe.fregat.ua
+0 2 0 4776 1 1455878314
+-
 user178.fireeye.com
 0 9 8 295043 1 1455808154
 /
+122.155.43.47
+0 110 41 3383511 2 1456024589
+/admin
+cjx19.neoplus.adsl.tpnet.pl
+0 2 2 3855 1 1455900597
+/
+122.155.43.73
+0 138 101 1969439 1 1455942827
+/admin/studen/view
 198.101.238.203
 0 1 1 3927 1 1455821774
 /
 ks3267104.kimsufi.com
 0 1 1 3855 1 1455813473
 /
+122.155.45.91
+0 33 17 556027 1 1455933619
+/
+122.155.43.139
+0 13 3 1954243 1 1455929625
+/
+ofdp-3.phishmongers.com
+0 2 2 8008 2 1455964333
+/
+ec2-107-20-42-80.compute-1.amazonaws.com
+0 9 9 306313 1 1455856358
+/
 ns7000412.ip-158-69-228.net
 0 1 1 3927 1 1455833864
 /
+122.155.45.71
+0 243 193 5014121 2 1455965881
+/admin
 # End Of Table - sites (monthly)
 # -sites- (daily)
-122.155.43.54
-0 15 14 331686 1 1455851075
-/register
-109-162-125-254-broadband.kyivstar.net
-0 3 0 13602 1 1455849726
--
-122.155.43.16
-0 34 17 390568 1 1455851131
-/admin/insertstuden
+122.155.43.47
+0 91 36 3349406 1 1456024589
+/admin
 # End Of Table - sites (daily)
 # -referrers- 
-http://ubrstuden.com/admin/insertstuden
-0 8
-http://ubrstuden.com/member/yearbook
-0 2
-http://ubrstuden.com/home
-0 18
-http://ubrstuden.com/login
-0 12
-http://ubrstuden.com/member
-0 10
-- (Direct Request)
-0 36
-http://ubrstuden.com/
-0 90
-http://ubrstuden.com/register
-0 18
-http://ubrstuden.com/phpmyadmin/
-0 12
-http://ubrstuden.com/admin
+http://ubrstuden.com/administrator/
 0 1
+http://ubrstuden.com/admin/insertstuden
+0 18
+http://ubrstuden.com/member/yearbook
+0 12
+http://ubrstuden.com/home
+0 31
+http://ubrstuden.com/wp-login.php
+0 1
+http://ubrstuden.com/login
+0 79
+http://ubrstuden.com/phpmyadmin/themes/pmahomme/jquery/jquery-ui-1.11.2.css
+0 5
+https://www.facebook.com/
+0 1
+http://ubrstuden.com/picture/ajax-loader.gif
+0 1
+http://ubrstuden.com/member
+0 81
+- (Direct Request)
+0 81
+http://ubrstuden.com/forgetpass
+0 1
+http://ubrstuden.com/
+0 227
+http://ubrstuden.com/register
+0 88
+http://ubrstuden.com/phpmyadmin/sql.php
+0 2
+http://ubrstuden.com/phpmyadmin/
+0 32
+http://ubrstuden.com/admin
+0 17
 http://ubrstuden.com/bootstrap/css/bootstrap.min.css
-0 2
+0 11
+http://ubrstuden.com/admin/studen
+0 275
 http://ubrstuden.com/phpmyadmin/phpmyadmin.css.php
-0 2
+0 8
 http://ubrstuden.com/phpmyadmin/index.php
-0 13
+0 73
 # End Of Table - referrers
 # -agents- 
+Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:x.xx) Gecko/20090504 Mozilla Firefox/3.0.2.1
+0 1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36
+0 2
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36
+0 21
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.71 Safari/534.24
 0 2
+Mozilla/4.0 (compatible; Synapse)
+0 2
 Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile/11D257 Sa
-0 34
+0 92
 Opera/9.80 (Windows NT 6.1; U; ru) Presto/2.8.131 Version/11.10
-0 3
+0 6
+Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:x.xx) Gecko/20030504 Mozilla Firebird/0.6
+0 1
+Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36
+0 324
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36
+0 108
+Mozilla/5.0 (Linux; Android 4.1.2; LT26w Build/6.2.B.1.96) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.58 Mobile 
+0 13
 Mozilla/5.0 (Linux; U; Android 4.1.2; th-th; GT-S5310B Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobil
 0 15
+Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)
+0 2
+Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0
+0 2
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+0 1
 Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36
-0 152
+0 286
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36
+0 138
 Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.28) Gecko/20120306 Firefox/3.6.28
 0 1
 Mozilla/5.0 (Windows NT 6.1; WOW64; rv:16.0) Gecko/20100101 Firefox/21.0
 0 1
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) splash Safari/538.1
+0 9
 Wget/1.15 (linux-gnu)
 0 16
 # End Of Table - agents
