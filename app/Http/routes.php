@@ -27,8 +27,8 @@ Route::get('logout',function(){
 	return Redirect::to('/');
 });
 
-Route::get('forgetpass',['middleware'=>'guest','as' => 'forgetpass','uses'=>'Member@forgetpass']);
-Route::post('forgetpass',['middleware'=>'guest','as' => 'resetpass','uses'=>'Member@resetpass']);
+Route::get('forgetpass',['as' => 'forgetpass','uses'=>'Member@forgetpass']);
+Route::post('forgetpass',['as' => 'resetpass','uses'=>'Member@resetpass']);
 
 
 //Admin
@@ -54,3 +54,5 @@ Route::get('member',['middleware'=>'auth','as' => 'member','uses'=>'Member@index
 
 Route::get('member/yearbook',['middleware'=>'auth','as'=>'yearbook','uses'=>'Member@yearbook']);
 Route::any('member/upload-pic', ['middleware'=>'auth','as'=>'uploadPic','uses'=>'Member@uploadPic']);
+Route::post('member/update', ['middleware'=>'auth','as'=>'memberUpdate','uses'=>'Member@update']);
+Route::any('member/yearbook/generate', ['middleware'=>'auth','as'=>'yeaBooGen','uses'=>'Member@yeaBooGen']);

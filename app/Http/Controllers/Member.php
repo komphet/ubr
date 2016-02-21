@@ -171,6 +171,9 @@ class Member extends Controller
     }
 
     public function forgetpass(){
+        if(Auth::check()){
+            Auth::logout();
+        }
         return view('users.forgetpass');
     }
 
@@ -321,9 +324,12 @@ class Member extends Controller
 
 
     public function index(){
+        $date = strtotime(Auth::user()->birthday);
+        $birthMonth = SetupValue::where('slug','M-'.date('n',$date))->first();
         return view('users.index')
                 ->with('classTeachers',$this->classTeacher)
                 ->with('titleNames',$this->titleName)
+                ->with(compact('birthMonth'));
                 ;
     }
 
@@ -383,6 +389,94 @@ class Member extends Controller
         }
         
 
+    }
+
+    public function update(Request $request)
+    {            
+                //dd($request->all());
+                $niceNames = array(
+                    'gradYear' => 'ปีจบการศึกษา',
+                    'classRoom' => 'สายชั้น',
+                    'CRNo' => 'เลขที่',
+                    'studenNo' => 'รหัสนักเรียน',
+                    'idCardNo' => 'รหัสประชาชน',
+                    'titleName' => 'คำนำหน้าชื่อ',
+                    'name' => 'ชื่อ',
+                    'lastname' => 'นามสกุล',
+                    'nickname' => 'ชื่อเล่น',
+                    'birthday' => 'วันเกิด',
+                    'address' => 'ที่อยู่',
+                    'tel' => 'เบอร์โทรศัพท์',
+                );
+                $messages = [
+                    'required' => ':attribute จำเป็นต้องระบุข้อมูล!',
+                    'date_format' => 'รูปแบบวันที่ไม่ถูกต้อง! กรุณาระบุ ปีคศ-เดือน-วัน เท่านั้น!',
+                    'email' => 'Email ไม่ถูกต้อง!',
+                    'unique' => ':attribute มีผู้ใช้งานแล้ว!',
+                    'alpha_num' => ':attribute กรุณาระบุตัวเลขหรือตัวอักษรเท่านั้น!',
+                    'between' => ':attribute ต้องอยู่ระหว่าง :min ถึง :max ตัวอักษรเท่านั้น!',
+                    'confirmed' => 'รหัสผ่านไม่ตรงกัน!',
+                    'date_format' => ':attribute วันที่ไม่ถูกต้อง!',
+                    'min' => ':attribute ข้อมูลต้องมี :max ตัว!',
+                    'max' => ':attribute ข้อมูลต้องมี :max ตัว!',
+                ];
+                $validator = Validator::make($request->all(),[
+                    'gradYear' => 'required',
+                    'classRoom' => 'required',
+                    'CRNo' => 'required',
+                    'studenNo' => 'required',
+                    'idCardNo' => 'required|max:13|min:13',
+                    'titleName' => 'required',
+                    'name' => 'required',
+                    'lastname' => 'required',
+                    'nickname' => 'required',
+                    'address' => 'required',
+                    'birthday' => 'required|date_format:Y-m-d',
+                    'tel' => 'required'
+                ],$messages);
+                $validator->setAttributeNames($niceNames); 
+                if ($validator->fails()) {
+                    return redirect(route('member',['action' =>'2']))
+                                    ->withErrors($validator->errors())
+                                    ->withInput($request->all())
+                                    ;
+                }
+
+                $classRoom = explode(',', $request->get('classRoom'));
+                //dd($classRoom);
+
+                $memberUpdate = User::find(Auth::user()->id);
+                $memberUpdate->gradYear =   trim($request->get('gradYear'));
+                $memberUpdate->class =      trim($classRoom[0]);
+                $memberUpdate->room =       trim($classRoom[1]);
+                $memberUpdate->CRNo =       trim($request->get('CRNo'));
+                $memberUpdate->studenNo =   trim($request->get('studenNo'));
+                $memberUpdate->idCardNo =   trim($request->get('idCardNo'));
+                $memberUpdate->titleName =  trim($request->get('titleName'));
+                $memberUpdate->name =       trim($request->get('name'));
+                $memberUpdate->lastname =   trim($request->get('lastname'));
+                $memberUpdate->nickname =   trim($request->get('nickname'));
+                $memberUpdate->birthday =   trim($request->get('birthday'));
+                $memberUpdate->address =    trim($request->get('address'));
+                $memberUpdate->tel =        trim($request->get('tel'));
+                $memberUpdate->contact =    trim($request->get('contact'));
+                $memberUpdate->save();
+
+
+
+
+                $log = new Log;
+                $log->memberId = Auth::user()->id;
+                $log->detail = 'Update Member,'.$memberUpdate;
+                $log->save();
+                return redirect(route('member',['action' =>'2']));
+
+
+    }
+
+
+    public function yeaBooGen(Request $request){
+        dd($request->all());
     }
 
 

@@ -41,6 +41,7 @@
 	 				หนังสือรุ่น
 	 		</div>
 	 		<div class="panel-body">
+	 		{!! Form::open(['url'=>route('yeaBooGen')]) !!}
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon2"><div class="input-title">แนะนำตัว</div></span>
 					<input type="text" class="form-control" name="aboutMe" placeholder="เช่น สวัสดีฉันชื่ออิชิตัน" aria-describedby="basic-addon2">					
@@ -77,7 +78,8 @@
 					<span class="input-group-addon" id="basic-addon11"><div class="input-title2">อยากบอกโรงเรียนว่า</div></span>
 				 	<input type="text" class="form-control" name="tellSchool" placeholder="เช่น เรียนดีจุงเบย" aria-describedby="basic-addon11">
 		 		</div>
-				
+		 		<button type="submit" style="width:100%" class="btn btn-success">จัดทำหนังสือรุ่น</button>
+			{!! Form::close() !!}
 		 	</div>	 			
 	 	</div>
 	</div>
