@@ -32,7 +32,7 @@
 	<div class="col-md-2 col-sm-4">
 		<ul class="list-group">
 		  <li class="list-group-item" align="center">
-		  	<img class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/{{Auth::user()->picture}}">
+		  	<img id="pro-picture" class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/{{Auth::user()->picture}}">
 
 		  </li>
 		  <a href="{{ route('member') }}" class="list-group-item <?php if(!isset($_GET['action'])) echo 'active'; ?>" >สมาชิก</a></li>			  				  
@@ -59,18 +59,55 @@
 								<span class="input-group-btn"><button type="button" class="uploadCrop-result btn btn-success">บันทึกภาพ</button></span>
 							</div>
 							{!! Form::close() !!}
+							<div class="progress" style="display: none;">
+							  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+							  </div>
+							</div>
 							<div id="item">
 							</div>
+
 							<script type="text/javascript">
 								var picUrl = "//{{$_SERVER['SERVER_NAME']}}/{{Auth::user()->picture}}";
 								$('#uploadForm').ajaxForm({
-									success:function(){
-										location.reload();
+									beforeSubmit:function(){
+										$('#item').hide();
+										$('.progress').show();
+									},
+									success:function(data){
+										picUrl = null;
+										$('#pro-picture').attr('src',picUrl);
+										uploadCropFunction();
+										picUrl = "//{{$_SERVER['SERVER_NAME']}}/"+data;
+										$('#pro-picture').attr('src',picUrl);
+										uploadCropFunction();
+										
 									},
 									fail:function(){
 										alert('Error! กรุณาตรวจสอบการเชื่อมต่อ!');
-									}
+									},
+									xhr: function() {  // Custom XMLHttpRequest
+							            var myXhr = $.ajaxSettings.xhr();
+							            if(myXhr.upload){ // Check if upload property exists
+							                myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+							            }
+							            return myXhr;
+							        },
 								});
+
+								function progressHandlingFunction(e){
+								    if(e.lengthComputable){
+								    	$now = e.loaded;
+								    	$total = e.total;
+								    	$per = ($now*100)/$total;
+								        $('.progress-bar').attr('aria-valuemax',$total).attr('aria-valuenow',$now).css('width',$per+'%');
+
+								        if($per == 100){
+								        	$('#item').show();
+											$('.progress').hide();
+								        }
+								       
+								    }
+								}
 								function uploadCropFunction(){
 									$('#item').text('');
 									var pictureWidth = $('#pictureWidth').width()-80;
