@@ -279,7 +279,7 @@
 							- ลงชื่อเข้าใช้								
 						</div>
 					</div>
-					@if(isset($checkYB->link))
+					@if(count($checkYB) != 0)
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								หนังสือรุ่น
