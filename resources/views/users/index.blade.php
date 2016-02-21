@@ -71,6 +71,7 @@
 									beforeSubmit:function(){
 										$('#item').hide();
 										$('.progress').show();
+										$('.uploadCrop-result').addClass('disabled');
 									},
 									success:function(data){
 										picUrl = null;
@@ -103,6 +104,7 @@
 								        if($per == 100){
 								        	$('#item').show();
 											$('.progress').hide();
+											$('.uploadCrop-result').removeClass('disabled');
 								        }
 								       
 								    }
