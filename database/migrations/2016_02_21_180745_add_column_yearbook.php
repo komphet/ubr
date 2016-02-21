@@ -13,6 +13,9 @@ class AddColumnYearbook extends Migration
     public function up()
     {
         Schema::table('bookyear_detail', function ($table) {
+            $table->dropColumn('aboutMe');
+            $table->string('aboutMe1')->after('memberId');
+            $table->string('aboutMe2')->after('aboutMe1');
             $table->string('link')->after('motto');
         });
     }
@@ -26,6 +29,9 @@ class AddColumnYearbook extends Migration
     {
         Schema::table('bookyear_detail', function ($table) {
             $table->dropColumn('link');
+            $table->dropColumn('aboutMe1');
+            $table->dropColumn('aboutMe2');
+            $table->string('aboutMe')->after('memberId');
         });
     }
 }

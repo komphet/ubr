@@ -18,6 +18,8 @@ use App\User;
 use App;
 use App\SetupValue;
 use App\Log;
+use Intervention\Image\Facades\Image;
+use App\Yearbook;
 
 
 class Member extends Controller
@@ -262,7 +264,8 @@ class Member extends Controller
 
 
     public function yearbook(){
-        return view('users.yearbook');
+            $checkYB = Yearbook::where('memberId',Auth::user()->id)->first();
+        return view('users.yearbook')->with(compact('checkYB'));
     }
 
     public function studenUpdate(Request $request){
@@ -326,10 +329,12 @@ class Member extends Controller
     public function index(){
         $date = strtotime(Auth::user()->birthday);
         $birthMonth = SetupValue::where('slug','M-'.date('n',$date))->first();
+        $checkYB = Yearbook::where('memberId',Auth::user()->id)->first();
         return view('users.index')
                 ->with('classTeachers',$this->classTeacher)
                 ->with('titleNames',$this->titleName)
-                ->with(compact('birthMonth'));
+                ->with(compact('birthMonth'))
+                ->with(compact('checkYB'))
                 ;
     }
 
@@ -356,10 +361,12 @@ class Member extends Controller
         $filePic = base64_decode($filePic);
 
         $user_update = User::find(Auth::user()->id)->first();
-
-        if (!unlink($user_update->picture)){
-          return 'false';
+        if($user_update->picture != 'picture/yearbook/ubr.jpg'){
+            if (!unlink($user_update->picture)){
+              return 'false';
+            }
         }
+        
 
         
         $dir = 'uploads/class-'.Auth::user()->class.'/room-'.Auth::user()->room;
@@ -368,7 +375,7 @@ class Member extends Controller
             mkdir($dir, 0777, true);
         }
         $millitime = round(microtime(true) * 1000);
-        $filename = 'pic-'.Auth::user()->CRNo.'-'.Auth::user()->id.'-'.$millitime.".jpg";
+        $filename = 'pic-'.Auth::user()->class.Auth::user()->room.'-'.Auth::user()->CRNo.'-'.Auth::user()->id.'-'.$millitime.".jpg";
 
         $file_put_contents = file_put_contents($dir.'/'.$filename, $filePic);
 
@@ -389,6 +396,180 @@ class Member extends Controller
         }
         
 
+    }
+    public function yeaBooGen(Request $request){
+        //dd($request->all());
+        $date = strtotime(Auth::user()->birthday);
+        $birthMonth = SetupValue::where('slug','M-'.date('n',$date))->first();
+        $yearThai = date("Y",$date)+543;
+        $birthday = date('j',$date).' '.$birthMonth->title.' '.$yearThai;
+
+        $name = '#'.Auth::user()->CRNo.' '.Auth::user()->titleName.' '.Auth::user()->name.' '.Auth::user()->lastname;
+        $proPic = Image::make(Auth::user()->picture)->resize(140,140);
+        $proPic = Image::make(Auth::user()->picture)->resize(140,140);
+
+        if((Auth::user()->CRNo%2) == 0){
+            $bg = 'picture/yearbook/y2.jpg';
+        }
+        else{
+            $bg = 'picture/yearbook/y1.jpg';
+        }
+
+
+        $img = Image::make($bg)
+                ->insert($proPic,'top-left',100,188)
+                ->text($name,260,180,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(36);
+                    $font->color('#000');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text(Auth::user()->studenNo,237,335,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#000');
+                    $font->align('right');
+                    $font->valign('top');
+                })
+                ->text(Auth::user()->nickname,315,335,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#000');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($birthday,445,334,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#000');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('aboutMe1'),270,240,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(30);
+                    $font->color('#000');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('aboutMe2'),270,270,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(30);
+                    $font->color('#000');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('likeColor'),167,389,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#1100b7');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('likeSubject'),187,419,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#1100b7');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('myfriend'),187,447,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#1100b7');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('myTeacher'),239,475,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#1100b7');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('tellFriend'),250,505,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#1100b7');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('tellTeacher'),268,533,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#1100b7');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('tellSchool'),268,563,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(24);
+                    $font->color('#1100b7');
+                    $font->align('left');
+                    $font->valign('top');
+                })
+                ->text($request->get('motto'),339.5,632,function($font){
+                    $font->file('fonts/ThaiSansNeue-Bold.ttf');
+                    $font->size(36);
+                    $font->color('#FFF');
+                    $font->align('center');
+                    $font->valign('top');
+                })
+                ;
+
+        if($request->get('action') == 'save'){
+
+            $dir = 'yearbook/class-'.Auth::user()->class.'/room-'.Auth::user()->room;
+            if (!file_exists($dir)){
+                mkdir($dir, 0777, true);
+            }
+            $millitime = round(microtime(true) * 1000);
+            $filename = 'yearbook-'.Auth::user()->class.Auth::user()->room.'-'.Auth::user()->id.'-'.$millitime.".jpg";
+            $img->save($dir.'/'.$filename);
+
+            $checkYB = Yearbook::where('memberId',Auth::user()->id)->first();
+            if(count($checkYB) != 0){
+                if($checkYB->link != ''){
+                    if (!unlink($checkYB->link)){
+                      return 'false';
+                    }
+                }
+            }else{
+                $checkYB = new Yearbook;
+            }
+            $checkYB->memberId = Auth::user()->id;
+            $checkYB->aboutMe1 = $request->get('aboutMe1');
+            $checkYB->aboutMe2 = $request->get('aboutMe2');
+            $checkYB->likeSubject = $request->get('likeSubject');
+            $checkYB->likeColor = $request->get('likeColor');
+            $checkYB->myFriend = $request->get('myfriend');
+            $checkYB->myTeacher = $request->get('myTeacher');
+            $checkYB->tellFriend = $request->get('tellFriend');
+            $checkYB->tellTeacher = $request->get('tellTeacher');
+            $checkYB->tellSchool = $request->get('tellSchool');
+            $checkYB->motto = $request->get('motto');
+            $checkYB->link = $dir.'/'.$filename;
+            $checkYB->save();
+
+            if(count($checkYB) != 0){
+                $log = new Log;
+                $log->memberId = Auth::user()->id;
+                $log->detail = 'Update Yearbook,'.$checkYB;
+                $log->save();
+            }else{
+                $log = new Log;
+                $log->memberId = Auth::user()->id;
+                $log->detail = 'Create Yearbook,'.$checkYB;
+                $log->save();
+            }
+            
+            return Redirect::route('yearbook');
+
+        }
+
+
+        return $img->response('jpg');
     }
 
     public function update(Request $request)
@@ -475,9 +656,7 @@ class Member extends Controller
     }
 
 
-    public function yeaBooGen(Request $request){
-        dd($request->all());
-    }
+   
 
 
 

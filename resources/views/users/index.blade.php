@@ -279,6 +279,19 @@
 							- ลงชื่อเข้าใช้								
 						</div>
 					</div>
+					@if(isset($checkYB->link))
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								หนังสือรุ่น
+							</div>
+							<div class="panel-body">
+								<a href="{{route('yearbook')}}">
+								<img id="result" class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/{{$checkYB->link}}">	
+								</a>					
+							</div>
+						</div>
+
+					@endif
 				@endif
 	</div>	
 	<div class="col-md-4 col-sm-4">
