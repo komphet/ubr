@@ -38,8 +38,7 @@
 		  <a href="{{ route('member') }}" class="list-group-item <?php if(!isset($_GET['action'])) echo 'active'; ?>" >สมาชิก</a></li>			  				  
 		  <a href="?action=1" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 1) echo 'active';} ?>" >เปลี่ยนภาพ</a></li>
 		  <a href="?action=2" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 2) echo 'active';} ?>" >แก้ไขข้อมูล</a></li>
-		  <a href="?action=3" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 3) echo 'active';} ?>" >เปลี่ยนรหัสผ่าน</a></li>
-		  <a href="?action=4" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 4) echo 'active';} ?>" >ข้อความ</a></li>
+		  <a href="?action=3" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 3) echo 'active';} ?>" >รหัสผ่าน/Email</a></li>
 		</ul>			
 	</div>
 	<div class="col-md-6 col-sm-4">
@@ -172,15 +171,24 @@
 					</div>
 
 					@elseif($_GET['action'] == 2)
-					{!! Form::open() !!}
-					{!! Form::hidden('id','') !!}
+					{!! Form::open(['url'=>route('memberUpdate')]) !!}
 					<div class="panel panel-primary">
 					  <div class="panel-heading">
 					  	แก้ไขข้อมูล
 					  	<div class="row">
 					  	</div>		  	
 					  </div>
-					  <div class="panel-body">		  	
+					  <div class="panel-body">
+					  		@if(count($errors) > 0)
+					  			<div class="alert alert-danger">
+					  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					  				<ul>
+					  				@foreach($errors->all() as $error)
+					  					<li><b>{{$error}}</b></li>
+					  				@endforeach
+					  				</ul>
+					  			</div>
+					  		@endif  	
 					  		<div class="input-group">
 							  <span class="input-group-addon" id="basic-addon1"><div class="input-title">ปีจบการศึกษา</div></span>
 							  <input value="{{ Auth::user()->gradYear }}" type="text" class="form-control" name="gradYear" aria-describedby="basic-addon1">
@@ -220,7 +228,27 @@
 							<div class="input-group">
 							  <span class="input-group-addon" id="basic-addon1"><div class="input-title">นามสกุล</div></span>
 							  <input type="text" class="form-control" name="lastname" value="{{ Auth::user()->lastname }}" aria-describedby="basic-addon1">
-							</div>				
+							</div>	
+							<div class="input-group">
+							  <span class="input-group-addon" id="basic-addon1"><div class="input-title">ชื่อเล่น</div></span>
+							  <input type="text" class="form-control" name="nickname" value="{{ Auth::user()->nickname }}" aria-describedby="basic-addon1">
+							</div>
+							<div class="input-group">
+							  <span class="input-group-addon" id="basic-addon1"><div class="input-title">วันเกิด</div></span>
+							  <input type="text" class="form-control datepicker" name="birthday" value="{{ Auth::user()->birthday }}" aria-describedby="basic-addon1">
+							</div>	
+							<div class="input-group">
+							  <span class="input-group-addon" id="basic-addon1"><div class="input-title">ที่อยู่</div></span>
+							  <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" aria-describedby="basic-addon1">
+							</div>
+							<div class="input-group">
+							  <span class="input-group-addon" id="basic-addon1"><div class="input-title">เบอร์โทรศัพท์</div></span>
+							  <input type="text" class="form-control" name="tel" value="{{ Auth::user()->tel }}" aria-describedby="basic-addon1">
+							</div>
+							<div class="input-group">
+							  <span class="input-group-addon" id="basic-addon1"><div class="input-title">ติดต่ออื่นๆ</div></span>
+							  <input type="text" class="form-control" name="contact" value="{{ Auth::user()->contact }}" aria-describedby="basic-addon1">
+							</div>						
 							<button type="submit" style="width:100%" class="btn btn-success">บันทึกข้อมูล</button>
 					  </div>
 					</div>
@@ -228,60 +256,64 @@
 					@elseif($_GET['action'] == 3)
 					<div class="panel panel-primary">
 						<div class="panel-body">
-
+							<a href="{{route('forgetpass')}}" class="btn btn-warning" style="text-align: center; width: 100%;">รีเซ็ตรหัสผ่าน/Email</a>
 						</div>
 					</div>
-					@elseif($_GET['action'] == 4)
-					<div class="panel panel-primary">
+					@endif
+				@else
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							ประกาศ
+						</div>
 						<div class="panel-body">
-
+							เปิดเซิฟเวอร์ใหม่									
 						</div>
 					</div>
-					@endif
-					@else
-						<div class="panel panel-warning">
-							<div class="panel-heading">
-								ประกาศ
-							</div>
-							<div class="panel-body">
-								เปิดเซิฟเวอร์ใหม่									
-							</div>
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							สิ่งที่ต้องทำ
 						</div>
-						<div class="panel panel-danger">
-							<div class="panel-heading">
-								สิ่งที่ต้องทำ
-							</div>
-							<div class="panel-body">
-								- ลงทะเบียน
-								<br>
-								- ลงชื่อเข้าใช้								
-							</div>
+						<div class="panel-body">
+							- ลงทะเบียน
+							<br>
+							- ลงชื่อเข้าใช้								
 						</div>
-					@endif
+					</div>
+				@endif
 	</div>	
 	<div class="col-md-4 col-sm-4">
 		<div class="panel panel-danger">
 			<div class="panel-body">
-				{{ Auth::user()->titleName }}
+				<b>ชื่อ: </b>{{ Auth::user()->titleName }}
 				{{ Auth::user()->name }}
 				{{ Auth::user()->lastname }}
-				ชั้น ม.{{ Auth::user()->class }}/{{ Auth::user()->room }}
-				เลขที่ {{ Auth::user()->CRNo }}
-				<br>					
-				บ้านเลขที่ {{ Auth::user()->address }}
+				<b>ชื่อเล่น: </b> {{ Auth::user()->nickname }}
 				<br>
-				เบอร์โทรศัพท์ {{ Auth::user()->tel }}
-				<br>
-				ช่องทางการติดต่อ {{ Auth::user()->contact }}
-				<br>
+				<b>ชั้น:</b> ม.{{ Auth::user()->class }}/{{ Auth::user()->room }}
+				<b>เลขที่:</b> {{ Auth::user()->CRNo }}
+				<b>รหัสนักเรียน:</b> {{ Auth::user()->studenNo }}
+				<br>	
+				<b>รหัสประชาชน:</b> {{ Auth::user()->idCardNo }}
+				<br>				
 				<?php
 					$date = strtotime(Auth::user()->birthday);
-					$dateThai = date("วันที่ d เดือน n",$date);
 					$yearThai = date("Y",$date)+543;
+
+					$datetime1 = new DateTime(date('Y-m-d',$date));
+					$datetime2 = new DateTime(date('Y-m-d'));
+					$interval = $datetime1->diff($datetime2);
+					$intervalY = date('Y')-date('Y',$date);
 				?>
-				วันเกิด {{ $dateThai }} ปี {{ $yearThai }}
+				<b>วันเกิด:</b> {{ date('j',$date) }} {{$birthMonth->title}} {{ $yearThai }}
+				<b>อายุ:</b> {{ $interval->format('%y') }} ปี {{ $interval->format('%m') }} เดือน {{ $interval->format('%d') }} วัน 
 				<br>
-				ปีจบการศึกษา {{ Auth::user()->gradYear }}
+				<b>ปีจบการศึกษา:</b> {{ Auth::user()->gradYear }}
+				<br>
+				<b>ที่อยู่:</b> {{ Auth::user()->address }}
+				<br>
+				<b>เบอร์โทรศัพท์:</b> {{ Auth::user()->tel }}
+				<br>
+				<b>ช่องทางการติดต่อ:</b> {{ Auth::user()->contact }}
 				<br>
 			</div>				
 		</div>
