@@ -108,8 +108,8 @@
 		        	
 		        @else
 		        	<li class="@yield('register')" ><a href="{{route('register')}}">ลงทะเบียน</a></li>
-		        	<li class="@yield('login')" ><a href="{{route('login')}}">ลงชื่อเข้าใช้</a></li>
 		        	<li class="@yield('forgetpass')" ><a href="{{route('forgetpass')}}">ลืมรหัสผ่าน</a></li>
+		        	<li class="@yield('login')" ><a href="{{route('login')}}">ลงชื่อเข้าใช้</a></li>
 		        @endif
 		      </ul>
 		    </div><!-- /.navbar-collapse -->

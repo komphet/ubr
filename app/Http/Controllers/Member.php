@@ -348,14 +348,21 @@ class Member extends Controller
         $filePicExplode = explode(',', $filePic);
         $filePic = $filePicExplode[1];
         $filePic = base64_decode($filePic);
+
+        $user_update = User::find(Auth::user()->id)->first();
+
+        if (!unlink($user_update->picture)){
+          return 'false';
+        }
+
         
         $dir = 'uploads/class-'.Auth::user()->class.'/room-'.Auth::user()->room;
 
         if (!file_exists($dir)){
             mkdir($dir, 0777, true);
         }
-
-        $filename = 'pic-'.Auth::user()->CRNo.'-'.Auth::user()->id.".jpg";
+        $millitime = round(microtime(true) * 1000);
+        $filename = 'pic-'.Auth::user()->CRNo.'-'.Auth::user()->id.'-'.$millitime.".jpg";
 
         $file_put_contents = file_put_contents($dir.'/'.$filename, $filePic);
 
