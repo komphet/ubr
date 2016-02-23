@@ -84,7 +84,7 @@
 									@endif
 								@endif
 								</ul>
-
+								<br>
 									<span style="color: red" class="glyphicon glyphicon-ok"></span>
 									ลงทะเบียน
 									:
