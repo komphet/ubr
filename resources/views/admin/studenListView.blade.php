@@ -37,7 +37,13 @@
 							<td>
 								{!! Form::checkbox("del",$studenList->id,false,array('onclick'=>'event.stopPropagation()')) !!}
 								@if($studenList->active)
-									<span class="glyphicon glyphicon-ok"></span>
+									<span style="color: red" class="glyphicon glyphicon-ok"></span>
+								@endif
+								@if($studenList->picture != 'picture/yearbook/ubr.jpg')
+									<span style="color: green" class="glyphicon glyphicon-ok"></span>
+								@endif
+								@if($studenList->yearbook)
+									<span style="color: blue" class="glyphicon glyphicon-ok"></span>
 								@endif
 							</td>
 							<td>{{ $studenList->studenNo }}</td>
