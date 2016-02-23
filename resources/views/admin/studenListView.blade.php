@@ -84,6 +84,15 @@
 									@endif
 								@endif
 								</ul>
+
+									<span style="color: red" class="glyphicon glyphicon-ok"></span>
+									ลงทะเบียน
+									:
+									<span style="color: green" class="glyphicon glyphicon-ok"></span>
+									เพิ่มรูปภาพ
+									:
+									<span style="color: blue" class="glyphicon glyphicon-ok"></span>
+									หนังสือรุ่น
 							</td>
 						</tfoot>
 				</table>
