@@ -362,9 +362,10 @@ class Member extends Controller
 
         $user_update = User::find(Auth::user()->id)->first();
         if($user_update->picture != 'picture/yearbook/ubr.jpg'){
-            if (!unlink($user_update->picture)){
-              return 'false';
+            if(file_exists($user_update->picture)){
+                unlink($user_update->picture);
             }
+            
         }
         
 
@@ -388,8 +389,6 @@ class Member extends Controller
             $log->memberId = Auth::user()->id;
             $log->detail = 'Edit Picture,'.$user_update;
             $log->save();
-
-
             return $dir.'/'.$filename;
         }else{
             return 'false';
@@ -420,7 +419,7 @@ class Member extends Controller
                 ->insert($proPic,'top-left',100,188)
                 ->text($name,260,180,function($font){
                     $font->file('fonts/ThaiSansNeue-Bold.ttf');
-                    $font->size(36);
+                    $font->size(34);
                     $font->color('#000');
                     $font->align('left');
                     $font->valign('top');
@@ -531,8 +530,8 @@ class Member extends Controller
             $checkYB = Yearbook::where('memberId',Auth::user()->id)->first();
             if(count($checkYB) != 0){
                 if($checkYB->link != ''){
-                    if (!unlink($checkYB->link)){
-                      return 'false';
+                     if(file_exists($checkYB->link)){
+                        unlink($checkYB->link);
                     }
                 }
             }else{
@@ -562,8 +561,11 @@ class Member extends Controller
                 $log->memberId = Auth::user()->id;
                 $log->detail = 'Create Yearbook,'.$checkYB;
                 $log->save();
+
             }
-            
+            $updateYstatus = User::find(Auth::user()->id);
+            $updateYstatus->yearbook = true;
+            $updateYstatus->save();
             return Redirect::route('yearbook');
 
         }

@@ -94,7 +94,7 @@
 	 	</div>
 	</div>
 	<div class="col-sm-6">
-		@if(count($checkYB) != 0)
+		@if(count($checkYB) != 0 && file_exists($checkYB->link))
 			<img id="result" class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/{{$checkYB->link}}">
 		@else
 			<img id="result" class="img-responsive" src="{{route('yeaBooGen')}}">

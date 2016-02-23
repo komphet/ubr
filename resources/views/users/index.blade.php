@@ -263,24 +263,25 @@
 					</div>
 					@endif
 				@else
-					<div class="panel panel-warning">
-						<div class="panel-heading">
-							ประกาศ
+					
+					
+					@if(Auth::user()->picture == 'picture/yearbook/ubr.jpg')	
+						<a href="{{route('member')}}?action=1">	
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-info-sign"></span>
+							กรุณาอัพโหลดภาพ คลิกที่นี่เพื่ออัพโหลดภาพ
 						</div>
-						<div class="panel-body">
-							เปิดเซิฟเวอร์ใหม่									
+						</a>
+					@endif
+					@if(count($checkYB) == 0)	
+						<a href="{{route('yearbook')}}">	
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-info-sign"></span>
+							กรุณาจัดทำหนังสือรุ่น คลิกที่นี่เพื่อจัดทำ
 						</div>
-					</div>
-					<div class="panel panel-danger">
-						<div class="panel-heading">
-							สิ่งที่ต้องทำ
-						</div>
-						<div class="panel-body">
-							- ลงทะเบียน
-							<br>
-							- ลงชื่อเข้าใช้								
-						</div>
-					</div>
+						</a>
+					@endif			
+
 					@if(count($checkYB) != 0)
 						<div class="panel panel-info">
 							<div class="panel-heading">
@@ -294,6 +295,84 @@
 						</div>
 
 					@endif
+					<ul class="list-group" > 
+					<li class="list-group-item list-group-item-info"><h4>5 ขั้นตอนการใช้งานง่ายๆ</h4></li>
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-sm-9">
+							<a target="_blank" href="{{route('register')}}">
+								<img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/howto/1.JPG" class="img-responsive">
+							</a>
+							</div>
+							<div class="col-sm-3">
+								<a target="_blank" href="{{route('register')}}"><b>ขั้นตอนที่ 1 ลงทะเบียน [คลิกที่นี่]</b></a>
+								ระบุรหัสประจำตัวนักเรียน 5 หลักหรือรหัสประจำตัวประชาชน 13 หลัก แล้วกด "ตรวจสอบข้อมูล" 
+							</div>
+						</div>
+						
+					</li>
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-sm-9">
+								<img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/howto/2.JPG" class="img-responsive">
+							</div>
+							<div class="col-sm-3">
+								<b>ขั้นตอนที่ 2 ตรวจสอบข้อมูล</b>
+								ระบุข้อมูลให้ครบ "ติดต่ออื่นๆ" สามารถระบุ Facebook หรือ Line ได้ เช่น Facebook : komdragon "Username" ใช้สำหรับ Login เข้าสู่ระบบ ใช้ภาษาอังกฤษและตัวเลขเท่านั้น
+								"Password" ให้ระบุทั้ง 2 ช่องเหมือนกัน 4-20 ตัวอักษร เสร็จแล้วกด "ลงทะเบียน"
+							</div>
+						</div>
+							
+
+						
+					</li>
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-sm-9">
+								<a target="_blank" href="{{route('member',['action'=>1])}}"><img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/howto/3.JPG" class="img-responsive">
+								</a>
+							</div>
+							<div class="col-sm-3">
+								<a target="_blank" href="{{route('member',['action'=>1])}}">
+								<b>ขั้นตอนที่ 3 เพิ่มรูปภาพ [คลิกที่นี่]</b></a>
+								เข้าไปที่เมนูสมาชิก แล้วคลิกที่ "เปลี่ยนภาพ"
+							</div>
+						</div>
+						
+					</li>
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-sm-9">
+								<a target="_blank" href="{{route('member',['action'=>1])}}"><img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/howto/4.JPG" class="img-responsive">
+								</a>
+							</div>
+							<div class="col-sm-3">
+								<a target="_blank" href="{{route('member',['action'=>1])}}">
+								<b>ขั้นตอนที่ 4 เลือกรูปภาพ [คลิกที่นี่]</b></a>
+								จากนั้นเลือกรูปภาพที่ต้องการ แล้วกด "บันทึกภาพ"
+							</div>
+						</div>
+						
+						
+
+					</li>
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-sm-9">
+								<a target="_blank" href="{{route('yearbook')}}"><img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/howto/5.JPG" class="img-responsive">
+								</a>
+							</div>
+							<div class="col-sm-3">
+								<a target="_blank" href="{{route('yearbook')}}">
+								<b>ขั้นตอนที่ 5 จัดทำหนังสือรุ่น [คลิกที่นี่]</b>
+								</a>
+								ไปที่เมนู "หนังสือรุ่น" ใส่ข้อมูลให้ครบถ้วนแล้วกด "จัดทำหนังสือรุ่น"
+							</div>
+						</div>
+						
+						
+					</li>
+				</ul>
 				@endif
 	</div>	
 	<div class="col-md-4 col-sm-4">

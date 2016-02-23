@@ -29,6 +29,7 @@ Route::get('logout',function(){
 
 Route::get('forgetpass',['as' => 'forgetpass','uses'=>'Member@forgetpass']);
 Route::post('forgetpass',['as' => 'resetpass','uses'=>'Member@resetpass']);
+Route::get('checkstu/{class}/{room}',['as' => 'checkstu','uses'=>'Home@checkstu']);
 
 
 //Admin
@@ -56,3 +57,4 @@ Route::get('member/yearbook',['middleware'=>'auth','as'=>'yearbook','uses'=>'Mem
 Route::any('member/upload-pic', ['middleware'=>'auth','as'=>'uploadPic','uses'=>'Member@uploadPic']);
 Route::post('member/update', ['middleware'=>'auth','as'=>'memberUpdate','uses'=>'Member@update']);
 Route::any('member/yearbook/generate', ['middleware'=>'auth','as'=>'yeaBooGen','uses'=>'Member@yeaBooGen']);
+

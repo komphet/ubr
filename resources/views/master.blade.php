@@ -128,10 +128,17 @@
             @yield('content')
         </div>
         @yield('contentBottom')
-        <div class="container">
-            <hr>
-            &copy; 2015 โรงเรียนอุบลรัตน์พิทยาคม
-
+        <div class="container" align="center">
+        	<br>
+            <div class="jumbotron">
+            <b>&copy; 2015 โรงเรียนอุบลรัตน์พิทยาคม <br>
+            สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาเขต 25<br>
+			316 หมู่ 2 ต.เขื่อนอุบลรัตน์ อ.อุบลรัตน์ จ.ขอนแก่น 40250<br>
+			Tel : 043-446100  Fax : 043-446100Email : ubr2554@gmail.com<br>
+			<br>
+            มีปัญหาการใช้งานกรุณาติดต่อผู้ดูแลระบบ : นายคมเพชร มีทรัพย์ <br>
+            โทร. 08-0535-6935, Email: komphetmeesab@hotmail.com, Facebook:komdragon, Line:komdragon</b>
+            </div>
         </div>
 	
 	
