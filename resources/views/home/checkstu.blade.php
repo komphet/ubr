@@ -27,7 +27,7 @@
 						<?php
 							$countStuden = App\User::where('class',$class->title)
 												->where('room',$class->value)
-												->where('CRNo','!=','0')
+												->where('CRNo','!=','00')
 												->where(function($qq){
 													$qq->where('picture','picture/yearbook/ubr.jpg')
 													->orwhere('yearbook',false);

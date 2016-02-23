@@ -16,8 +16,8 @@
 					<b>เปิดระบบ Review หนังสือรุ่น<br> วันที่ 6 มีนาคม 2559</b>
 					
 				</div>
-				<img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/pok1.JPG" class="img-responsive">
-				<img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/y.JPG" class="img-responsive">
+				<img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/pok1.jpg" class="img-responsive">
+				<img src="//{{$_SERVER['SERVER_NAME']}}/picture/yearbook/y.jpg" class="img-responsive">
 
 
 			</div>
@@ -41,7 +41,7 @@
 						<?php
 							$countStuden = App\User::where('class',$class->title)
 												->where('room',$class->value)
-												->where('CRNo','!=','0')
+												->where('CRNo','!=','00')
 												->where(function($qq){
 													$qq->where('picture','picture/yearbook/ubr.jpg')
 													->orwhere('yearbook',false);
