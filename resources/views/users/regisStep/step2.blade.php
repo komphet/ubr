@@ -138,7 +138,7 @@
 								</div>
 								<div class="col-sm-6">
 									<div class="input-group">
-										<span class="input-group-addon">Username</span>
+										<span class="input-group-addon">Username(ใช้ Login)</span>
 							 			{!! Form::text('username',$memberDetail->username,array('class' => 'form-control','placeholder' => '4-20 ตัวเลขหรือตัวอักษรภาษาอังกฤษเท่านั้น!')) !!}	
 									</div>
 								</div>
