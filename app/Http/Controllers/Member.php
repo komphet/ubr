@@ -53,8 +53,8 @@ class Member extends Controller
                     //dd($memberDetail );
                     if(
                         $memberDetail->username == '' || 
-                        $memberDetail->password == '' || 
-                        $memberDetail->email == ''
+                        $memberDetail->password == '' 
+                       
                     ){
                         return View('users.regisStep.step2')
                             ->with('agreement',$this->agreement)
@@ -96,7 +96,7 @@ class Member extends Controller
                     'address' => 'required',
                     'birthday' => 'required|date_format:Y-m-d',
                     //'contact' => 'required',
-                    'email' => 'required|email|unique:member,email',
+                   
                     'username' => 'required|alpha_num|between:4,200|unique:member,username',
                     'password' => 'required|between:4,200|confirmed',
                     'password_confirmation' => 'required|between:4,200',
