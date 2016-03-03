@@ -138,7 +138,7 @@
 			<br>
 			<br>
             มีปัญหาการใช้งานกรุณาติดต่อผู้ดูแลระบบ : นายคมเพชร มีทรัพย์ <br>
-            โทร. 08-0535-6935, Email: <a href="email::komphetmeesab@hotmail.com"><!--email_off--> komphetmeesab@hotmail.com<!--/email_off--></a>, Facebook:komdragon, Line:komdragon</b>
+            โทร. 08-0535-6935, Email: <a href="email::komphetmeesab@hotmail.com"><!--email_off--> komphetmeesab@hotmail.com<!--/email_off--></a>, Facebook: <a target="_blank" href="https://www.facebook.com/komdragon"> komdragon</a>, Line: komdragon</b>
             <br>
             <b>Web Developer</b>:
             นายคมเพชร มีทรัพย์ ม.6/1 เลขที่ 14,
