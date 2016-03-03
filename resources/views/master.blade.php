@@ -134,10 +134,10 @@
             <b>&copy; 2015 โรงเรียนอุบลรัตน์พิทยาคม <br>
             สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาเขต 25<br>
 			316 หมู่ 2 ต.เขื่อนอุบลรัตน์ อ.อุบลรัตน์ จ.ขอนแก่น 40250<br>
-			Tel : 043-446100,  Fax : 043-446100, Email: ubr2554@gmail.com<br>
+			Tel : 043-446100,  Fax : 043-446100, Email: <a href="email::ubr2554@gmail.com">ubr2554@gmail.com</a><br>
 			<br>
             มีปัญหาการใช้งานกรุณาติดต่อผู้ดูแลระบบ : นายคมเพชร มีทรัพย์ <br>
-            โทร. 08-0535-6935, Email: komphetmeesab@hotmail.com, Facebook:komdragon, Line:komdragon</b>
+            โทร. 08-0535-6935, Email: <a href="email::komphetmeesab@hotmail.com">komphetmeesab@hotmail.com</a>, Facebook:komdragon, Line:komdragon</b>
             <br>
             <b>Web Developer</b>:
             นายคมเพชร มีทรัพย์ ม.6/1 เลขที่ 14,
