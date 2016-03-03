@@ -34,6 +34,28 @@
 
 
 </style>
+@if(Auth::user()->CRNo == '00')
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<div class="panel panel-primary">
+	 		<div class="panel-heading">
+	 				<h3>ความรู้สึกที่มีต่อนักเรียนรุ่นนี้ (รุ่น40@2558)</h3>
+	 		</div>
+	 		<div class="panel-body">
+	 			{!! Form::open(['url'=>route('yeaBooGen'),'id'=>'ebookForm']) !!}
+	 				{!! Form::hidden('action','save') !!}
+	 				<textarea name="textTeacher" class="form-control" rows="10">@if(count($checkYB) != 0){{trim($checkYB->aboutMe1)}}@endif</textarea>
+	 				@if(count($checkYB) != 0)
+					<button type="submit" style="width:100%" class="btn btn-success">อัพเดทหนังสือรุ่น</button>
+					@else
+						<button type="submit" style="width:100%" class="btn btn-warning">จัดทำหนังสือรุ่น</button>
+					@endif
+	 			{!! Form::close() !!}
+	 		</div>
+	 	</div>
+	</div>
+</div>
+@else
 <div class="row">
 	<div class="col-sm-6">
 		<div class="panel panel-primary">
@@ -101,7 +123,7 @@
 		@endif
 	</div>	
 </div>
-
+@endif
 
 <script type="text/javascript">
 

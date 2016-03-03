@@ -20,17 +20,7 @@
 	}
 </style>
 	<div class="row">
-		<div class="col-sm-5">
-			<div class="panel panel-warning">
-				<div class="panel-heading">
-					ข้อตกลงการใช้งาน
-				</div>
-				<div class="panel-body">
-					{!! html_entity_decode($agreement) !!}
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-7">
+		<div class="col-sm-6 col-sm-offset-3">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					ลงทะเบียน Step2 
