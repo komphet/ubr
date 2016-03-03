@@ -49,44 +49,46 @@
 			<div class="panel-heading">
 				<h4>รายชื่อผู้ที่ข้อมูลยังไม่สมบูรณ์ {{ $classPar }}/{{ $roomPar }}</h4>
 			</div>
-			<table class="table">
-				<tr>
-					<th>เลขที่</th>
-					<th>ชื่อ</th>
-					<th>นามสกุล</th>
-					<th>ลงทะเบียน</th>
-					<th>เพิ่มรูปภาพ</th>
-					<th>หนังสือรุ่น</th>
-				</tr>
-				@foreach($lists as $list)
-				<tr>
-					<td>{{$list->CRNo}}</td>
-					<td>{{$list->titleName}} {{$list->name}} </td>
-					<td>{{$list->lastname}}</td>
-					<td>
-						@if($list->active)
-							<span class="glyphicon glyphicon-ok success" style="color:green"></span>
-						@else
-							<span class="glyphicon glyphicon-remove danger" style="color:red"></span>
-						@endif
-					</td>
-					<td>
-						@if($list->picture != 'picture/yearbook/ubr.jpg')
-							<span class="glyphicon glyphicon-ok success" style="color:green"></span>
-						@else
-							<span class="glyphicon glyphicon-remove danger" style="color:red"></span>
-						@endif
-					</td>
-					<td>
-						@if($list->yearbook)
-							<span class="glyphicon glyphicon-ok success" style="color:green"></span>
-						@else
-							<span class="glyphicon glyphicon-remove danger" style="color:red"></span>
-						@endif
-					</td>
-				</tr>
-				@endforeach
-			</table>
+			<div style="width:100%;overflow:auto;">	
+				<table class="table">
+					<tr>
+						<th>เลขที่</th>
+						<th>ชื่อ</th>
+						<th>นามสกุล</th>
+						<th>ลงทะเบียน</th>
+						<th>เพิ่มรูปภาพ</th>
+						<th>หนังสือรุ่น</th>
+					</tr>
+					@foreach($lists as $list)
+					<tr>
+						<td>{{$list->CRNo}}</td>
+						<td>{{$list->titleName}} {{$list->name}} </td>
+						<td>{{$list->lastname}}</td>
+						<td>
+							@if($list->active)
+								<span class="glyphicon glyphicon-ok success" style="color:green"></span>
+							@else
+								<span class="glyphicon glyphicon-remove danger" style="color:red"></span>
+							@endif
+						</td>
+						<td>
+							@if($list->picture != 'picture/yearbook/ubr.jpg')
+								<span class="glyphicon glyphicon-ok success" style="color:green"></span>
+							@else
+								<span class="glyphicon glyphicon-remove danger" style="color:red"></span>
+							@endif
+						</td>
+						<td>
+							@if($list->yearbook)
+								<span class="glyphicon glyphicon-ok success" style="color:green"></span>
+							@else
+								<span class="glyphicon glyphicon-remove danger" style="color:red"></span>
+							@endif
+						</td>
+					</tr>
+					@endforeach
+				</table>
+			</div>
 		</div>
 	</div>
 

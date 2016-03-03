@@ -20,17 +20,7 @@
 	}
 </style>
 	<div class="row">
-		<div class="col-sm-5">
-			<div class="panel panel-warning">
-				<div class="panel-heading">
-					ข้อตกลงการใช้งาน
-				</div>
-				<div class="panel-body">
-					{!! html_entity_decode($agreement) !!}
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-7">
+		<div class="col-sm-6 col-sm-offset-3">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					ลงทะเบียน Step2 
@@ -138,7 +128,7 @@
 								</div>
 								<div class="col-sm-6">
 									<div class="input-group">
-										<span class="input-group-addon">Username</span>
+										<span class="input-group-addon">Username(ใช้ Login)</span>
 							 			{!! Form::text('username',$memberDetail->username,array('class' => 'form-control','placeholder' => '4-20 ตัวเลขหรือตัวอักษรภาษาอังกฤษเท่านั้น!')) !!}	
 									</div>
 								</div>

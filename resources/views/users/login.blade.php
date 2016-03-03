@@ -41,14 +41,14 @@
 						@endif
 						<div class="input-group <?php if($errorMessages['username'] != null) echo 'has-error'; ?>">
 							<span class="input-group-addon" id="username-addon">
-								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Username
 							</span>	
 							{!! Form::text('username','',array('class'=>'form-control','aria-describedby'=>'username-addon')) !!}	
 						</div>
 						
 						<div class="input-group margin-top <?php if($errorMessages['password'] != null) echo 'has-error'; ?>">
 							<span class="input-group-addon" id="password-addon ">
-								<span class="glyphicon glyphicon-lock " aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-lock " aria-hidden="true"></span> Password
 							</span>	
 							{!! Form::password('password',array('class'=>'form-control','aria-describedby'=>'password-addon')) !!}
 						</div>

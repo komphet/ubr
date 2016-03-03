@@ -84,7 +84,7 @@ class Member extends Controller
                     'date_format' => 'รูปแบบวันที่ไม่ถูกต้อง! กรุณาระบุ ปีคศ-เดือน-วัน เท่านั้น!',
                     'email' => 'Email ไม่ถูกต้อง!',
                     'unique' => ':attribute มีผู้ใช้งานแล้ว!',
-                    'alpha_num' => ':attribute กรุณาระบุตัวเลขหรือตัวอักษรเท่านั้น!',
+                    'alpha_num' => ':attribute กรุณาระบุตัวเลขหรือภาษาอังกฤษเท่านั้น!',
                     'between' => ':attribute ต้องอยู่ระหว่าง :min ถึง :max ตัวอักษรเท่านั้น!',
                     'confirmed' => 'รหัสผ่านไม่ตรงกัน!',
                     'min' => ':attribute วันที่ไม่ถูกต้อง!',
@@ -398,12 +398,13 @@ class Member extends Controller
     }
     public function yeaBooGen(Request $request){
         //dd($request->all());
+        if(Auth::user()->CRNo != '00'){
         $date = strtotime(Auth::user()->birthday);
         $birthMonth = SetupValue::where('slug','M-'.date('n',$date))->first();
         $yearThai = date("Y",$date)+543;
         $birthday = date('j',$date).' '.$birthMonth->title.' '.$yearThai;
 
-        $name = '#'.Auth::user()->CRNo.' '.Auth::user()->titleName.' '.Auth::user()->name.' '.Auth::user()->lastname;
+        $name = '#'.Auth::user()->CRNo.' '.Auth::user()->name.' '.Auth::user()->lastname;
         $proPic = Image::make(Auth::user()->picture)->resize(140,140);
         $proPic = Image::make(Auth::user()->picture)->resize(140,140);
 
@@ -516,12 +517,11 @@ class Member extends Controller
                     $font->valign('top');
                 })
                 ;
+            }
 
         if($request->get('action') == 'save'){
 
             if(Auth::user()->CRNo != '00'){
-
-            
 
                 $dir = 'yearbook/class-'.Auth::user()->class.'/room-'.Auth::user()->room;
                 if (!file_exists($dir)){
