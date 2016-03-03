@@ -525,7 +525,7 @@ class Member extends Controller
                     mkdir($dir, 0777, true);
                 }
                 $millitime = round(microtime(true) * 1000);
-                $filename = 'yearbook-'.Auth::user()->class.Auth::user()->room.'-'.Auth::user()->id.'-'.$millitime.".jpg";
+                $filename = 'yearbook-'.Auth::user()->class.Auth::user()->room.'-'.Auth::user()->CRNo.'-'.Auth::user()->id.'-'.$millitime.".jpg";
                 $img->save($dir.'/'.$filename);
             }
 
