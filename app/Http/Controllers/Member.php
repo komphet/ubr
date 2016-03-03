@@ -53,8 +53,8 @@ class Member extends Controller
                     //dd($memberDetail );
                     if(
                         $memberDetail->username == '' || 
-                        $memberDetail->password == '' || 
-                        $memberDetail->email == ''
+                        $memberDetail->password == ''
+                        //$memberDetail->email == ''
                     ){
                         return View('users.regisStep.step2')
                             ->with('agreement',$this->agreement)
@@ -96,7 +96,7 @@ class Member extends Controller
                     'address' => 'required',
                     'birthday' => 'required|date_format:Y-m-d',
                     //'contact' => 'required',
-                    'email' => 'required|email|unique:member,email',
+                    //'email' => 'required|email|unique:member,email',
                     'username' => 'required|alpha_num|between:4,200|unique:member,username',
                     'password' => 'required|between:4,200|confirmed',
                     'password_confirmation' => 'required|between:4,200',
@@ -519,13 +519,18 @@ class Member extends Controller
 
         if($request->get('action') == 'save'){
 
-            $dir = 'yearbook/class-'.Auth::user()->class.'/room-'.Auth::user()->room;
-            if (!file_exists($dir)){
-                mkdir($dir, 0777, true);
+            if(Auth::user()->CRNo != '00'){
+
+            
+
+                $dir = 'yearbook/class-'.Auth::user()->class.'/room-'.Auth::user()->room;
+                if (!file_exists($dir)){
+                    mkdir($dir, 0777, true);
+                }
+                $millitime = round(microtime(true) * 1000);
+                $filename = 'yearbook-'.Auth::user()->class.Auth::user()->room.'-'.Auth::user()->id.'-'.$millitime.".jpg";
+                $img->save($dir.'/'.$filename);
             }
-            $millitime = round(microtime(true) * 1000);
-            $filename = 'yearbook-'.Auth::user()->class.Auth::user()->room.'-'.Auth::user()->id.'-'.$millitime.".jpg";
-            $img->save($dir.'/'.$filename);
 
             $checkYB = Yearbook::where('memberId',Auth::user()->id)->first();
             if(count($checkYB) != 0){
@@ -537,19 +542,28 @@ class Member extends Controller
             }else{
                 $checkYB = new Yearbook;
             }
-            $checkYB->memberId = Auth::user()->id;
-            $checkYB->aboutMe1 = $request->get('aboutMe1');
-            $checkYB->aboutMe2 = $request->get('aboutMe2');
-            $checkYB->likeSubject = $request->get('likeSubject');
-            $checkYB->likeColor = $request->get('likeColor');
-            $checkYB->myFriend = $request->get('myfriend');
-            $checkYB->myTeacher = $request->get('myTeacher');
-            $checkYB->tellFriend = $request->get('tellFriend');
-            $checkYB->tellTeacher = $request->get('tellTeacher');
-            $checkYB->tellSchool = $request->get('tellSchool');
-            $checkYB->motto = $request->get('motto');
-            $checkYB->link = $dir.'/'.$filename;
-            $checkYB->save();
+
+             if(Auth::user()->CRNo == '00'){
+                $checkYB->memberId = Auth::user()->id;
+                $checkYB->aboutMe1 = trim($request->get('textTeacher'));
+                $checkYB->link = 'none';
+                $checkYB->save();
+
+             }else{
+                $checkYB->memberId = Auth::user()->id;
+                $checkYB->aboutMe1 = $request->get('aboutMe1');
+                $checkYB->aboutMe2 = $request->get('aboutMe2');
+                $checkYB->likeSubject = $request->get('likeSubject');
+                $checkYB->likeColor = $request->get('likeColor');
+                $checkYB->myFriend = $request->get('myfriend');
+                $checkYB->myTeacher = $request->get('myTeacher');
+                $checkYB->tellFriend = $request->get('tellFriend');
+                $checkYB->tellTeacher = $request->get('tellTeacher');
+                $checkYB->tellSchool = $request->get('tellSchool');
+                $checkYB->motto = $request->get('motto');
+                $checkYB->link = $dir.'/'.$filename;
+                $checkYB->save();
+            }
 
             if(count($checkYB) != 0){
                 $log = new Log;

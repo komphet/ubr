@@ -42,7 +42,22 @@
 		</ul>			
 	</div>
 	<div class="col-md-6 col-sm-4">
-		
+					@if(Auth::user()->picture == 'picture/yearbook/ubr.jpg')	
+						<a href="{{route('member')}}?action=1">	
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-info-sign"></span>
+							กรุณาอัพโหลดภาพ คลิกที่นี่เพื่ออัพโหลดภาพ
+						</div>
+						</a>
+					@endif
+					@if(count($checkYB) == 0)	
+						<a href="{{route('yearbook')}}">	
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-info-sign"></span>
+							กรุณาจัดทำหนังสือรุ่น คลิกที่นี่เพื่อจัดทำ
+						</div>
+						</a>
+					@endif			
 				@if(isset($_GET['action']))
 					
 					@if($_GET['action'] == 1)
@@ -265,22 +280,7 @@
 				@else
 					
 					
-					@if(Auth::user()->picture == 'picture/yearbook/ubr.jpg')	
-						<a href="{{route('member')}}?action=1">	
-						<div class="alert alert-danger">
-							<span class="glyphicon glyphicon-info-sign"></span>
-							กรุณาอัพโหลดภาพ คลิกที่นี่เพื่ออัพโหลดภาพ
-						</div>
-						</a>
-					@endif
-					@if(count($checkYB) == 0)	
-						<a href="{{route('yearbook')}}">	
-						<div class="alert alert-danger">
-							<span class="glyphicon glyphicon-info-sign"></span>
-							กรุณาจัดทำหนังสือรุ่น คลิกที่นี่เพื่อจัดทำ
-						</div>
-						</a>
-					@endif			
+					
 
 					@if(count($checkYB) != 0)
 						<div class="panel panel-info">
@@ -288,9 +288,14 @@
 								หนังสือรุ่น
 							</div>
 							<div class="panel-body">
-								<a href="{{route('yearbook')}}">
-								<img id="result" class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/{{$checkYB->link}}">	
-								</a>					
+								@if(Auth::user()->CRNo != '00')
+									<a href="{{route('yearbook')}}">
+									<img id="result" class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/{{$checkYB->link}}">	
+									</a>
+								@else
+									<textarea name="textTeacher" class="form-control" readonly rows="10">{{trim($checkYB->aboutMe1)}}</textarea>
+								@endif
+													
 							</div>
 						</div>
 
