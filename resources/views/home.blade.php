@@ -57,7 +57,8 @@
 				</ul>
 			</div>
 			<div class="panel-body">
-			<b>มีปัญหาการใช้งานกรุณาติดต่อผู้ดูแลระบบ : นายคมเพชร มีทรัพย์ โทร. 08-0535-6935, Email: komphetmeesab@hotmail.com, Facebook:komdragon, Line:komdragon</b>
+			<b>มีปัญหาการใช้งานกรุณาติดต่อผู้ดูแลระบบ : นายคมเพชร มีทรัพย์ <br>
+            โทร. 08-0535-6935, Email: <a href="email::komphetmeesab@hotmail.com"><!--email_off--> komphetmeesab@hotmail.com<!--/email_off--></a>, Facebook: <a target="_blank" href="https://www.facebook.com/komdragon"> AkimotoAkira Hoshi No Chikara</a>, Line: komdragon</b>
 			</div>
 		</div>
 	</div>
