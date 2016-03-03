@@ -130,9 +130,11 @@
         </div>
         @yield('contentBottom')
         <div class="container" align="center">
-        	<hr width="50%">
+        	
+            <b>&copy; 2015 โรงเรียนอุบลรัตน์พิทยาคม 
+            <hr width="50%">
             <script type="text/javascript" language="javascript1.1" src="http://tracker.stats.in.th/tracker.php?sid=67432"></script><noscript><a target="_blank" href="http://www.stats.in.th/">www.Stats.in.th</a></noscript>
-            <b>&copy; 2015 โรงเรียนอุบลรัตน์พิทยาคม <br>
+            <br>
             สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาเขต 25<br>
 			316 หมู่ 2 ต.เขื่อนอุบลรัตน์ อ.อุบลรัตน์ จ.ขอนแก่น 40250<br>
 			Tel : 043-446100,  Fax : 043-446100, Email: <a href="email::ubr2554@gmail.com"><!--email_off--> ubr2554@gmail.com<!--/email_off--></a>
