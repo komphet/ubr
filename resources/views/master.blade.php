@@ -77,7 +77,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="/">UBR:Studen System</a>
+		      <a class="navbar-brand" href="/">UBR:Student System</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -134,11 +134,24 @@
             <b>&copy; 2015 โรงเรียนอุบลรัตน์พิทยาคม <br>
             สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาเขต 25<br>
 			316 หมู่ 2 ต.เขื่อนอุบลรัตน์ อ.อุบลรัตน์ จ.ขอนแก่น 40250<br>
-			Tel : 043-446100  Fax : 043-446100Email : ubr2554@gmail.com<br>
+			Tel : 043-446100,  Fax : 043-446100, Email : ubr2554@gmail.com<br>
 			<br>
             มีปัญหาการใช้งานกรุณาติดต่อผู้ดูแลระบบ : นายคมเพชร มีทรัพย์ <br>
             โทร. 08-0535-6935, Email: komphetmeesab@hotmail.com, Facebook:komdragon, Line:komdragon</b>
-            
+            <br>
+            <b>Web Developer</b>:
+            นายคมเพชร มีทรัพย์ ม.6/1 เลขที่ 14,
+            นายสหภาพ คำสุข ม.3/1 เลขที่ 6
+            <br>
+            <b>Web Information</b>:
+            นายศราวุฒิ โพธิ์ภูมี ม.6/1 เลขที่ 6,
+            นายจิตวัต ไสยันต์ ม.6/1 เลขที่ 1,
+            นายพงพิพัฒน์ ธรรมลา ม.5/4 เลขที่ 7,
+            นางสาวศศิณัฏฐา ทองเหลา ม.4/3 เลขที่ 14
+            <br>
+            <b>ในความดูแลของ</b>: อาจารย์ชนิกานต์ คะนนท์
+
+
         </div>
 	
 	
