@@ -122,10 +122,17 @@
 		<br>
 		<br>
 		<div class="container">
-			<ol class="breadcrumb">
-			  <li><a href="//{{ $_SERVER['SERVER_NAME'] }}/home">Home</a></li>
-			  @yield('breadcrumb')
-			</ol>
+			<?php
+
+				$checkNotice = App\SetupValue::where('slug','NOTICE')->first();
+			?>
+			@if(count($checkNotice) != 0)
+				@if($checkNotice->active)
+					<div class="alert alert-{{$checkNotice->detail}}" align="center">
+						{!! $checkNotice->value !!}
+					</div>
+				@endif
+			@endif
             @yield('content')
         </div>
         @yield('contentBottom')

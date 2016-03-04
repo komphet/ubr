@@ -10,8 +10,9 @@
 |
 */
 
-Route::get('/','Home@index');
+Route::get('/',['as' => 'home','uses'=>'Home@index']);
 Route::get('/home','Home@index');
+
 
 
 Route::get('register',['middleware'=>'guest','as' => 'register','uses'=>'Member@register']);
@@ -57,4 +58,5 @@ Route::get('member/yearbook',['middleware'=>'auth','as'=>'yearbook','uses'=>'Mem
 Route::any('member/upload-pic', ['middleware'=>'auth','as'=>'uploadPic','uses'=>'Member@uploadPic']);
 Route::post('member/update', ['middleware'=>'auth','as'=>'memberUpdate','uses'=>'Member@update']);
 Route::any('member/yearbook/generate', ['middleware'=>'auth','as'=>'yeaBooGen','uses'=>'Member@yeaBooGen']);
-
+Route::post('question', ['middleware'=>'auth','as'=>'questionHome','uses'=>'Home@question']);
+Route::get('question/del', ['middleware'=>'auth','as'=>'questionDel','uses'=>'Home@questionDel']);
