@@ -152,7 +152,7 @@
 						
 						<div style="color: #969696; font-size: 0.9em;">โพสที่ {{$question->id}}</div>
 						<br>
-						<div class="q-box-detail">{{$question->detail}}</div>
+						<div class="q-box-detail">{!!$question->detail!!}</div>
 						<br>
 						<div class="q-box-bottom">
 							<?php
@@ -208,7 +208,7 @@
 									<div class="q-box-2">
 										<div style="color: #969696; font-size: 0.9em;">ความเห็นที่ {{$question->id}}-{{$key+1}}</div>
 										<br>
-										{{$subQ->detail}}
+										{!!$subQ->detail!!}
 										<br>
 										<br>
 										<div class="q-box-bottom">
