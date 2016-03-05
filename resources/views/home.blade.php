@@ -126,7 +126,7 @@
 
 	</style>
 		@if(count($questions) != 0)
-			@foreach($questions as $question)
+			@foreach($questions as $postNo => $question)
 				@if($question->subId == 0)
 					<div class="q-box-1">
 						
@@ -150,7 +150,7 @@
 							</tr>
 						</table>
 						
-						<div style="color: #969696; font-size: 0.9em;">โพสที่ {{$question->id}}</div>
+						<div style="color: #969696; font-size: 0.9em;">โพสที่ {{$postNo+1}}</div>
 						<br>
 						<div class="q-box-detail">{!!$question->detail!!}</div>
 						<br>
@@ -206,7 +206,7 @@
 								@if(count($subQs) != 0)
 									@foreach($subQs as $key => $subQ)
 									<div class="q-box-2">
-										<div style="color: #969696; font-size: 0.9em;">ความเห็นที่ {{$question->id}}-{{$key+1}}</div>
+										<div style="color: #969696; font-size: 0.9em;">ความเห็นที่ {{$postNo+1}}-{{$key+1}}</div>
 										<br>
 										{!!$subQ->detail!!}
 										<br>

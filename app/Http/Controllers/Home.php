@@ -62,10 +62,18 @@ class home extends Controller
         ],$massages);
 
         if ($validator->fails()) {
-            return redirect(route('home'))
+            if($request->get('redirect') == ''){
+                return redirect(route('home'))
                                ->withInput()
                                ->withErrors($validator->errors());
                             ;
+            }else{
+                return redirect(html_entity_decode($request->get('redirect')))
+                               ->withInput()
+                               ->withErrors($validator->errors());
+                            ;
+            }
+            
         }
 
 
@@ -79,8 +87,12 @@ class home extends Controller
         $log->memberId = Auth::user()->id;
         $log->detail = 'Post,'.$questionSave;
         $log->save();
-
-        return redirect(route('home'));
+        //dd($request->get('redirect'));
+        if($request->get('redirect') == ''){
+            return redirect(route('home'));
+        }else{
+            return redirect(html_entity_decode($request->get('redirect')));
+        }
     }
 
     public function questionDel(Request $request){
@@ -90,7 +102,11 @@ class home extends Controller
         $log->memberId = Auth::user()->id;
         $log->detail = 'Delete Post,'.$request->get('id');
         $log->save();
-        return redirect(route('home'));
+        if($request->get('redirect') == ''){
+            return redirect(route('home'));
+        }else{
+            return redirect(html_entity_decode($request->get('redirect')));
+        }
     }
 
 }

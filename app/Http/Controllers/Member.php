@@ -20,6 +20,7 @@ use App\SetupValue;
 use App\Log;
 use Intervention\Image\Facades\Image;
 use App\Yearbook;
+use App\Question;
 
 
 class Member extends Controller
@@ -328,11 +329,13 @@ class Member extends Controller
         $date = strtotime(Auth::user()->birthday);
         $birthMonth = SetupValue::where('slug','M-'.date('n',$date))->first();
         $checkYB = Yearbook::where('memberId',Auth::user()->id)->first();
+        $questions = Question::where('subId','')->orderBy('id')->get();
         return view('users.index')
                 ->with('classTeachers',$this->classTeacher)
                 ->with('titleNames',$this->titleName)
                 ->with(compact('birthMonth'))
                 ->with(compact('checkYB'))
+                ->with(compact('questions'))
                 ;
     }
 

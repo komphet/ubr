@@ -33,12 +33,12 @@
 		<ul class="list-group">
 		  <li class="list-group-item" align="center">
 		  	<img id="pro-picture" class="img-responsive" src="//{{$_SERVER['SERVER_NAME']}}/{{Auth::user()->picture}}">
-
 		  </li>
-		  <a href="{{ route('member') }}" class="list-group-item <?php if(!isset($_GET['action'])) echo 'active'; ?>" >สมาชิก</a></li>			  				  
-		  <a href="?action=1" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 1) echo 'active';} ?>" >เปลี่ยนภาพ</a></li>
-		  <a href="?action=2" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 2) echo 'active';} ?>" >แก้ไขข้อมูล</a></li>
-		  <a href="?action=3" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 3) echo 'active';} ?>" >รหัสผ่าน/Email</a></li>
+		  <a href="{{ route('member') }}" class="list-group-item <?php if(!isset($_GET['action'])) echo 'active'; ?>" >สมาชิก</a>  				 
+		  <a href="?action=1" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 1) echo 'active';} ?>" >เปลี่ยนภาพ</a>
+		  <a href="?action=2" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 2) echo 'active';} ?>" >แก้ไขข้อมูล</a>
+		  <a href="?action=3" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 3) echo 'active';} ?>" >รหัสผ่าน/Email</a>
+		  <a href="?action=4" class="list-group-item <?php if(isset($_GET['action'])){if($_GET['action'] == 4) echo 'active';} ?>" >สนทนา/สอบถาม</a>
 		</ul>			
 	</div>
 	<div class="col-md-6 col-sm-4">
@@ -276,6 +276,245 @@
 							<a href="{{route('forgetpass')}}" class="btn btn-warning" style="text-align: center; width: 100%;">รีเซ็ตรหัสผ่าน/Email</a>
 						</div>
 					</div>
+					@elseif($_GET['action'] == 4)
+								@if(count($errors->all()) != 0)
+										<div class="alert alert-danger" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										  <ul>
+										  	@foreach($errors->all() as $massage)
+										  		<li>{{$massage}}</li>
+										  	@endforeach
+										  </ul>
+										</div>
+								@endif
+					<style type="text/css">
+						.q-box-1{
+							width: 100%;
+							padding: 10px;
+							background: #222244;
+							border: #fff 1px solid;
+							color: #fff;
+							box-shadow: #717171 3px 3px 0px;
+							margin-bottom: 20px;
+						}
+						.q-box-2{
+							width: 100%;
+							padding: 10px;
+							background: #193366;
+							border: #fff 1px solid;
+							color: #fff;
+							box-shadow: #717171 3px 3px 0px;
+							margin-bottom: 20px;
+						}
+						.q-box-title{
+							color: #ffff00;
+							font-size: 1.5em;
+
+						}
+						.q-box-bottom,.textPost{
+							color: #bfbfda;
+							font-size: 0.89em;
+						}
+						.img-post{
+							border: 1px #fff solid;
+						}
+						.post-box{
+							margin-bottom: 20px;
+						}
+						.input-repost{
+							background: #193366;
+							color: #fff;
+							width: 100%;
+							padding: 10px;
+							border: 0;
+						}
+
+					</style>
+						@if(count($questions) != 0)
+							@foreach($questions as $postNo => $question)
+								@if($question->subId == 0)
+									<div class="q-box-1">
+										
+										<table width="100%">
+											<tr>
+												<td>
+												<div class="q-box-title">
+													{{$question->title}}
+												</div>
+												</td>
+												<td align="right">
+												@if(Auth::check())
+													@if(Auth::user()->admin || Auth::user()->id == $question->memberId)
+														<a style="color: #fff;" href="{{route('questionDel')}}?id={{$question->id}}&redirect={{htmlentities(route('member',['action'=>'4']))}}" 
+														onclick="if(!confirm('คุณต้องการลบโพสต์นี้หรือไม่?')){return false;}">
+														<span class="glyphicon glyphicon-trash"></span>
+														</a>
+													@endif
+												@endif
+												</td>
+											</tr>
+										</table>
+										
+										<div style="color: #969696; font-size: 0.9em;">โพสที่ {{$postNo+1}}</div>
+										<br>
+										<div class="q-box-detail">{!!$question->detail!!}</div>
+										<br>
+										<div class="q-box-bottom">
+											<?php
+												$memberCh = App\User::where('id',$question->memberId)->first();
+												$dateCreate = strtotime($question->created_at);
+												$date = date('j/n/Y',$dateCreate);
+												$time = date('H:i',$dateCreate);
+											?>
+											<table width="100%">
+												<tr>
+													<td>
+														<table cellpadding="5" cellspacing="5"> 
+															<tr>
+																<td style="padding: 5px" valign="top">
+																	<img class="img-post" src="/{{$memberCh->picture}}" width="30">
+																</td>
+																<td style="padding: 5px"  valign="top">
+																		สมาชิกหมายเลข {{$memberCh->id}} | {{$memberCh->username}}
+																	<br>
+																	เมื่อ {{$date}} เวลา {{$time}} น.
+																</td>
+															</tr>
+														</table>
+													</td>
+													<td align="right">
+													@if(Auth::check())
+														<a class="textPost" style="cursor: pointer;" 
+														onclick="$('.post-box-{{$question->id}}').toggle()">
+														<span class="glyphicon glyphicon-plus"></span> ตอบกลับ
+														</a>
+													@else
+														ลงชื่อเข้าใช้เพื่อตอบกลับ
+													@endif
+													</td>
+												</tr>
+											</table>
+											
+											
+										</div>
+									</div>
+									<table width="100%">
+										<tr>
+											<td width="10%">
+												
+											</td>
+											<td width="90%">
+												
+												<?php 
+													$subQs = App\Question::where('subId',$question->id)->orderBy('id')->get();
+												?>
+												@if(count($subQs) != 0)
+													@foreach($subQs as $key => $subQ)
+													<div class="q-box-2">
+														<div style="color: #969696; font-size: 0.9em;">ความเห็นที่ {{$postNo+1}}-{{$key+1}}</div>
+														<br>
+														{!!$subQ->detail!!}
+														<br>
+														<br>
+														<div class="q-box-bottom">
+															<?php
+																$memberCh = App\User::where('id',$subQ->memberId)->first();
+																$dateCreate = strtotime($subQ->created_at);
+																$date = date('j/n/Y',$dateCreate);
+																$time = date('H:i',$dateCreate);
+															?>
+															<table width="100%">
+																<tr>
+																	<td>
+																		<table cellpadding="5" cellspacing="5"> 
+																			<tr>
+																				<td style="padding: 5px" valign="top">
+																					<img class="img-post" src="/{{$memberCh->picture}}" width="30">
+																				</td>
+																				<td style="padding: 5px"  valign="top">
+																						สมาชิกหมายเลข {{$memberCh->id}} | {{$memberCh->username}}
+																					<br>
+																					เมื่อ {{$date}} เวลา {{$time}} น.
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																	<td align="right">
+																		@if(Auth::check())
+																			@if(Auth::user()->admin || Auth::user()->id == $subQ->memberId)
+																				<a style="color: #fff;" href="{{route('questionDel')}}?id={{$subQ->id}}&redirect={{htmlentities(route('member',['action'=>'4']))}}" 
+																				onclick="if(!confirm('คุณต้องการลบโพสต์นี้หรือไม่?')){return false;}">
+																				<span class="glyphicon glyphicon-trash"></span>
+																				</a>
+																			@endif
+																		@endif
+																	</td>
+																</tr>
+															</table>
+																		
+														</div>
+													</div>
+													@endforeach
+												@endif
+												@if(Auth::check())
+												
+												<div class="q-box-2 post-box post-box-{{$question->id}}" style="display: none;">
+													{!! Form::open(['url'=>route('questionHome',['redirect'=>htmlentities(route('member',['action'=>'4']))]),'id'=>'formpost-'.$question->id]) !!}
+														{!! Form::hidden('subId',$question->id) !!}
+														{!! Form::hidden('title',$question->title) !!}
+
+													      {!! Form::textarea('detail','',['rows'=>'3','class'=>'input-repost','placeholder'=>'เนื้อหา']) !!}
+													    	<button class="btn btn-success" style="margin-top: 10px;border: 1px solid #fff;" type="submit">โพสต์</button> 
+													    	&nbsp;&nbsp;&nbsp;&nbsp;
+													    	<a class="textPost" style="cursor: pointer;" 
+															onclick="$('.post-box-{{$question->id}}').toggle()">
+															<span class="glyphicon glyphicon-remove"></span> ปิดกล่อง
+															</a>
+														
+														
+													{!! Form::close() !!}
+
+												</div>
+												@endif
+											</td>
+										</tr>
+									</table>
+									
+								@endif
+							@endforeach
+						@endif
+						
+						<div class="post-box">
+							<style type="text/css">
+								.input-post-title{
+									color: #ffff00;
+									font-size: 1.5em;
+									background: #222244;
+									width: 100%;
+									padding: 10px;
+									border: 0;
+								}
+								.input-post-detail{
+									color: #fff;
+									background: #222244;
+									width: 100%;
+									padding: 10px;
+									border: 0;
+								}
+							</style>
+							<div class="q-box-1">
+							@if(Auth::check())
+								{!! Form::open(['url'=>route('questionHome',['redirect'=>htmlentities(route('member',['action'=>'4']))])]) !!}
+									{!! Form::hidden('subId','0') !!}
+									{!! Form::text('title','',['class'=>'input-post-title','placeholder'=>'หัวข้อ']) !!}
+									{!! Form::textarea('detail','',['rows'=>'3','class'=>'input-post-detail','placeholder'=>'เนื้อหา']) !!}
+									<button class="btn btn-success" style="margin-top: 10px;border: 1px solid #fff;" type="submit">โพสต์</button>
+								{!! Form::close() !!}
+							</div>
+							@else
+								ลงชื่อเข้าใช้เพื่อโพสข้อความ
+							@endif
+						</div>
 					@endif
 				@else
 					
